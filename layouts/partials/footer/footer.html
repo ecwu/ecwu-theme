@@ -1,0 +1,23 @@
+<footer class="relative mb-6">
+<div class="max-w-2xl mx-auto px-4 space-x-2 sm:px-6 lg:max-w-7xl lg:px-8 mb-5">
+    <hr class="pb-5">
+    <p>
+        Powered by <a href="https://gohugo.io">Hugo</a>, Build by <a href="https://github.com/features/actions">GitHub Action</a>.
+      </p>
+	<p>
+    {{ with .Site.Params.copyright }}
+      {{ . | safeHTML }}
+    {{ else }}
+      &copy; {{now.Format "2006"}}
+    {{ with .Site.Params.copyrightHolder }}{{ . }}{{end}}.
+    All rights reserved.
+    {{end}}
+    
+  </p>
+  {{ if .Site.Params.showBeian }}
+    <p>
+      <a href="http://beian.miit.gov.cn/">{{ .Site.Params.beianMessage }}</a>
+    </p>
+  {{end}}
+</div>
+</footer>

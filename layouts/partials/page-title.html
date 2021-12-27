@@ -1,0 +1,28 @@
+<div class="mb-4">
+  <h1><a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }} :: Draft {{end}}</a></h1>
+{{ if .Params.subtitle }}<h2 class=italic>{{ .Params.subtitle }}</h2>{{ end }}
+{{ if or (eq .Type "post") (.Params.meta)  }}
+</div>
+  <span>
+    {{ if .Params.author }}
+         Author: {{ .Params.author }}</span> <br>
+    {{ end }}
+
+
+    {{ if not .Params.hidedate }}
+    {{ .Date.Format "2006-01-02" }}
+    {{end }}
+
+    {{ if not .Params.hidereadtime }}
+      [{{ .ReadingTime }} min read]
+    {{ end }}
+
+    {{ if .Params.categories }}
+      <br>
+      Tags: 
+      {{ range .Params.categories }}
+        <a  href="{{ "/categories/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+      {{ end }}
+    {{ end }}
+  </span>
+{{ end }}

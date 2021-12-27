@@ -1,0 +1,8 @@
+{{ $loc := .Get 0  }}
+{{ if .IsNamedParams }}
+<div class="pf-carousel gallery {{with .Get "g-class"}}{{.}}{{end}}">
+<div class="pf-slider">
+{{ else if eq $loc "end" }}
+</div>
+</div>
+{{ end }}

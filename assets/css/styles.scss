@@ -1,0 +1,22 @@
+@tailwind base;
+
+@layer base {
+    a {
+        @apply font-bold hover:bg-blue-900 hover:text-white;
+    }
+
+    h1 {
+        @apply text-3xl;
+    }
+    
+    h2 {
+        @apply text-xl;
+    }
+    ul {
+        @apply list-disc list-inside;
+    }
+}
+
+@tailwind components;
+@tailwind utilities;
+

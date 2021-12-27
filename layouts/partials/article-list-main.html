@@ -1,0 +1,16 @@
+<div class="lg:col-start-1 lg:col-span-2 lg:pr-8">
+    <h3 class="text-sm font-medium text-gray-900">Latest Posts</h3>
+
+    <div class="mt-4">
+
+        <ul role="list" class="pl-4 list-disc text-sm space-y-2">
+            {{ range ( where .Site.RegularPages "Type" "post" | first 5 ) }}
+            <li class="text-gray-600">
+                <span class="text-gray-600">{{ .Date.Format "06' Jan 2" }} &middot;</span>
+                <a href="{{ .RelPermalink }}">{{.Title}}</a>
+            </li>
+            {{ end }}
+            <div><a class="text-gray-600" href="{{ .RelPermalink }}">All >></a></div>
+        </ul>
+    </div>
+</div>
