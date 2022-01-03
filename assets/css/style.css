@@ -1373,8 +1373,8 @@ article :is(:where(ul):not(:where([class~="not-prose"] *))) {
   margin-left: 1rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
+.mb-12 {
+  margin-bottom: 3rem;
 }
 
 .mb-6 {
@@ -1387,14 +1387,6 @@ article :is(:where(ul):not(:where([class~="not-prose"] *))) {
 
 .mr-2 {
   margin-right: 0.5rem;
-}
-
-.mb-8 {
-  margin-bottom: 2rem;
-}
-
-.mb-12 {
-  margin-bottom: 3rem;
 }
 
 .block {
