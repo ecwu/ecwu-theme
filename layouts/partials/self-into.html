@@ -1,17 +1,10 @@
-      <div class="lg:col-span-2 lg:pr-8">
-        <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-          Blog
-        </h1>
-      </div>
+<div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
+  <!-- Description and details -->
+  <div>
+    <h3 class="sr-only">introduction for the site</h3>
+    <div class="space-y-6">
+      <p class="text-lg text-gray-900">{{ .Site.Params.homePageThought | safeHTML }}</p>
+    </div>
+  </div>
 
-      <div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
-        <!-- Description and details -->
-        <div>
-          <h3 class="sr-only">random words by author</h3>
-
-          <div class="space-y-6">
-            <p class="text-base text-gray-900">{{ .Site.Params.homePageThought | safeHTML }}</p>
-          </div>
-        </div>
-
-      </div>
+</div>

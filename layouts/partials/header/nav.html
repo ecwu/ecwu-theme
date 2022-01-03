@@ -5,7 +5,7 @@
         {{ range $i, $e := $list }}
         <li>
         <div class="flex items-center">
-            <a href="{{ .URL }}" class="mr-2 text-sm font-medium text-gray-900">{{ .Name }}</a>
+            <a href="{{ .URL }}" class="mr-2 text-sm font-medium">{{ .Name }}</a>
             {{ if eq (add $i 1) $len }}
             {{ else }}
             <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-{{- partial "head/doctype.html" . -}}
+{{- partial "misc/doctype.html" . -}}
 <html>
 
 <head>
@@ -11,10 +11,13 @@
     class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
     <div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
         {{- partial "page-title.html" . -}}
-        {{ .Content | replaceRE "<p>" "<p class=\"py-2\">" | safeHTML }}
+        <div class="font-serif py-10">
+            {{ .Content }}
+        </div>
+        {{- partial "misc/article-info-card.html" . -}}
         {{- partial "related-post.html" . -}}
     </div>
-</div>
+    </div>
     {{- partial "footer/footer.html" . -}}
 </body>
 
