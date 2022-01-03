@@ -1,40 +1,30 @@
-{{- partial "misc/doctype.html" . -}}
-<html>
-
-<head>
-    {{- partial "head/head.html" . -}}
-</head>
-
-<body>
-    {{- partial "header/header.html" . -}}
-    <div
-        class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
-        <div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
-            <section class="list-page">
-                {{ range .Data.Pages.GroupByDate "2006" }}
-                <details open>
-                    <summary class="year">{{ .Key }} ({{ len .Pages }})</summary>
-                    {{ range .Pages.GroupByDate "January" }}
-                    <ul class="list-disc list-inside indent-6">
-                            <details open>
-                                <summary>{{ .Key }} ({{ len .Pages }})</summary>
-                                {{ range .Pages }}
-                                <ul class="list-disc list-inside indent-12">
-                                    <li>
-                                        <span class="list-date">{{ .Date.Format "Jan 2" }} &middot;</span>
-                                        <a href="{{ .RelPermalink }}">{{.Title}}</a>
-                                    </li>
-                                </ul>
-                                {{ end }}
-                            </details>
-                    </ul>
-                    {{ end }}
-                </details>
+{{ define "main" }}
+<div
+    class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+    <div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
+        <h2>All {{ .Name }}</h2>
+        <section class="list-page">
+            {{ range .Data.Pages.GroupByDate "2006" }}
+            <details open>
+                <summary class="year">{{ .Key }} ({{ len .Pages }})</summary>
+                {{ range .Pages.GroupByDate "January" }}
+                <ul class="list-disc list-inside indent-6">
+                    <details open>
+                        <summary>{{ .Key }} ({{ len .Pages }})</summary>
+                        {{ range .Pages }}
+                        <ul class="list-disc list-inside indent-12">
+                            <li>
+                                <span class="list-date">{{ .Date.Format "Jan 2" }} &middot;</span>
+                                <a href="{{ .RelPermalink }}">{{.Title}}</a>
+                            </li>
+                        </ul>
+                        {{ end }}
+                    </details>
+                </ul>
                 {{ end }}
-            </section>
-        </div>
+            </details>
+            {{ end }}
+        </section>
     </div>
-    {{- partial "footer/footer.html" . -}}
-</body>
-
-</html>
+</div>
+{{ end }}

@@ -1,14 +1,3 @@
-{{- partial "misc/doctype.html" . -}}
-<html>
-    <head>
-        {{- partial "head/head.html" . -}}
-    </head>
-    <body>
-        {{- partial "header/header.html" . -}}
-        {{- partial "main.html" . -}}
-        {{ define "main" }}
-            {{ .Content }}
-        {{ end }}
-        {{- partial "footer/footer.html" . -}}
-    </body>
-</html>
+{{ define "main" }}
+{{- partial "main.html" . -}}
+{{ end }}

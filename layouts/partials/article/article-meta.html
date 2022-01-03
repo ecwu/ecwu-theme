@@ -1,7 +1,7 @@
-<div class="mb-4">
+<div class="mb-12">
   <h1><a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }} :: Draft {{end}}</a></h1>
 {{ if .Params.subtitle }}<h2 class=italic>{{ .Params.subtitle }}</h2>{{ end }}
-</div>
+
 {{ if or (eq .Type "post") (.Params.meta)  }}
   <span>
     {{ if .Params.author }}
@@ -26,3 +26,4 @@
     {{ end }}
   </span>
 {{ end }}
+</div>
