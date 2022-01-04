@@ -36,11 +36,11 @@
                 Tags
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                
+                <div class="container">
                     {{ range .Params.tags }}
-                        <a class="rounded py-1 px-2 text-xs font-medium text-white bg-gray-900 visited:text-white" href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+                        <a class="rounded inline-block mb-2 py-1 px-2 text-xs font-medium text-white bg-gray-900 visited:text-white" href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
                     {{ end }}
-                    
+                  </div>
               </dd>
             </div>
             {{ end }}

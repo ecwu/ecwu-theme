@@ -1,3 +1,8 @@
+<!-- Load MathJax, if necessary. -->
+{{ if or .Params.math .IsHome }}
+  {{ partial "misc/math.html" . }}
+{{ end }}
+
 {{ $styles := resources.Get "css/style.css"}}
 {{ if .Site.IsServer }}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}">

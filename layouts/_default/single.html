@@ -4,6 +4,7 @@
     <div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
         {{- partial "article/article-meta.html" . -}}
         <article>
+            {{ partial "article/toc.html" . }}
             {{ .Content }}
         </article>
         {{- partial "article/article-info-card.html" . -}}
