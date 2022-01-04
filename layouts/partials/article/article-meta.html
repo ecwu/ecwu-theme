@@ -19,7 +19,7 @@
 
     {{ if .Params.categories }}
       <br>
-      Tags: 
+      Categories: 
       {{ range .Params.categories }}
         <a  href="{{ "/categories/" | absURL }}{{ . | urlize }}">{{ . }}</a>
       {{ end }}

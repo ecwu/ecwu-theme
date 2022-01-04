@@ -1,0 +1,6 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>{{ if .IsHome }}Home - {{ else }}{{ if .Page.Title }}{{ .Page.Title }} - {{ end }}{{ end }} {{ .Site.Params.subtitle }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ .Description }}">
+<meta name="keywords" content="{{ range .Keywords }}{{ . }},{{ end }}">
+<meta name="author" content="{{ .Site.Title }}">

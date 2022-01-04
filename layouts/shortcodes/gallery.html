@@ -1,8 +1,10 @@
 {{ $loc := .Get 0  }}
 {{ if .IsNamedParams }}
-<div class="pf-carousel gallery {{with .Get "g-class"}}{{.}}{{end}}">
-<div class="pf-slider">
+</div>
+<div class="flex overflow-x-scroll pb-10 col-span-full hide-scroll-bar {{with .Get "g-class"}}{{.}}{{end}}">
+<div class="flex space-x-4 flex-nowrap">
 {{ else if eq $loc "end" }}
 </div>
 </div>
+<div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
 {{ end }}

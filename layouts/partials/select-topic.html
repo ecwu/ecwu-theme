@@ -1,10 +1,10 @@
 <div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
-    <h2 class="text-2xl font-medium text-gray-900">Selected Topics</h2>
+    <h3 class="text-2xl not-italic font-medium text-gray-900">Selected Topics</h3>
     <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
       {{ range .Site.Menus.topic }}
       <div id="{{ .Identifier }}" class="mt-4 bg-white rounded-lg border border-gray-200">
         <div class="p-5">
-          <a href="#">
+          <a href="{{.URL}}">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ .Name }}</h5>
           </a>
           <p class="mb-3 font-normal text-gray-700">{{ .Pre }}</p>

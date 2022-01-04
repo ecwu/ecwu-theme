@@ -16,6 +16,10 @@
     article {
         @apply font-serif prose lg:prose-xl md:prose-lg mt-10 prose-ul:leading-5 prose-ol:leading-5;
     }
+
+    .gallery{
+        @apply h-2/5 overflow-x-visible;
+    }
 }
 
 @tailwind components;

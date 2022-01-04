@@ -5,7 +5,7 @@
             Article Card
           </h3>
           <p class="mt-1 max-w-2xl text-sm text-gray-500">
-            For article "<span class="italic">{{ .Title }}</span>"
+            For "<span class="italic">{{ .Title }}</span>"
           </p>
         </div>
         <div class="border-t border-gray-200">
@@ -37,8 +37,8 @@
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                 
-                    {{ range .Params.categories }}
-                        <a class="rounded py-1 px-2 text-xs font-medium text-white bg-gray-900" href="{{ "/categories/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+                    {{ range .Params.tags }}
+                        <a class="rounded py-1 px-2 text-xs font-medium text-white bg-gray-900 visited:text-white" href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
                     {{ end }}
                     
               </dd>
