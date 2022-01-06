@@ -1,23 +1,25 @@
-<footer class="relative mb-6">
 <div class="max-w-2xl mx-auto px-4 space-x-2 sm:px-6 lg:max-w-7xl lg:px-8 mb-5">
+  <footer class="relative mb-6 text-gray-900 dark:text-gray-200">
     <hr class="pb-5">
     <p>
-        Powered by <a href="https://gohugo.io">Hugo</a>, Build by <a href="https://github.com/features/actions">GitHub Action</a>.
-      </p>
-	<p>
-    {{ with .Site.Params.copyright }}
+      Powered by <a href="https://gohugo.io">Hugo</a>, Build by <a href="https://github.com/features/actions">GitHub
+        Action</a>.
+    </p>
+    <p>
+      {{ with .Site.Params.copyright }}
       {{ . | safeHTML }}
-    {{ else }}
+      {{ else }}
       &copy; {{now.Format "2006"}}
-    {{ with .Site.Params.copyrightHolder }}{{ . }}{{end}}.
-    All rights reserved.
-    {{end}}
-    
-  </p>
-  {{ if .Site.Params.showBeian }}
+      {{ with .Site.Params.copyrightHolder }}{{ . }}{{end}}.
+      All rights reserved.
+      {{end}}
+
+    </p>
+    {{ if .Site.Params.showBeian }}
     <p>
       <a href="http://beian.miit.gov.cn/">{{ .Site.Params.beianMessage }}</a>
     </p>
-  {{end}}
+    {{end}}
+
+  </footer>
 </div>
-</footer>

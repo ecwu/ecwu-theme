@@ -3,8 +3,8 @@
 @layer base {
     a {
         @apply font-bold hover:bg-blue-900 
-        hover:text-white
-        visited:text-slate-500 dark:visited:text-slate-700;
+        hover:text-white dark:hover:text-white
+        visited:text-zinc-400 dark:visited:text-slate-700;
     }
 
     body {
@@ -12,11 +12,11 @@
     }
 
     h1 {
-        @apply mt-6 mb-6 font-normal text-6xl;
+        @apply my-6 font-bold text-6xl;
     }
     
     h2 {
-        @apply italic mt-6 mb-6 font-normal text-4xl;
+        @apply italic my-6 font-medium text-4xl;
     }
 
     article {
@@ -25,6 +25,10 @@
 
     .gallery{
         @apply h-2/5 overflow-x-visible;
+    }
+
+    hr {
+        @apply dark:border-gray-700
     }
 }
 

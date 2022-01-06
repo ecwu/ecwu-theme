@@ -5,11 +5,11 @@
             {{ range ( where .Pages "Section" "post" ) }}
             {{ range first 5 .Pages }}
             <li class="text-gray-900 dark:text-gray-200">
-                <span class="text-gray-600">{{ .Date.Format "06' Jan 2" }} &middot;</span>
+                <span class="text-gray-700 dark:text-gray-400">{{ .Date.Format "06' Jan 2" }} &middot;</span>
                 <a href="{{ .RelPermalink }}">{{.Title}}</a>
             </li>
             {{ end }}
-            <div><a class="text-gray-600 " href="{{ .RelPermalink }}">All >></a></div>
+            <div><a class="text-gray-700 dark:text-gray-400" href="{{ .RelPermalink }}">All >></a></div>
             {{ end }}
         </ul>
     </div>
@@ -22,11 +22,11 @@
             {{ range ( where .Pages "Section" "photography" ) }}
             {{ range first 5 .Pages }}
             <li class="text-gray-900 dark:text-gray-200">
-                <span class="text-gray-600">{{ .Date.Format "06' Jan 2" }} &middot;</span>
+                <span class="text-gray-700 dark:text-gray-400">{{ .Date.Format "06' Jan 2" }} &middot;</span>
                 <a href="{{ .RelPermalink }}">{{.Title}}</a>
             </li>
             {{ end }}
-            <div><a class="text-gray-600" href="{{ .RelPermalink }}">All >></a></div>
+            <div><a class="text-gray-700 dark:text-gray-400" href="{{ .RelPermalink }}">All >></a></div>
             {{ end }}
         </ul>
     </div>
