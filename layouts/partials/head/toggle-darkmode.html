@@ -1,12 +1,32 @@
 <script>
-    // It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes
-    if (
-      localStorage.getItem('color-theme') === 'dark' ||
-      (!('color-theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark');
+  if (localStorage.getItem("current-theme") === null) {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      localStorage.setItem("current-theme", "dark");
+      document.documentElement.classList.add('dark')
     } else {
-      document.documentElement.classList.remove('dark');
+      localStorage.setItem("current-theme", "light");
     }
+  } else {
+    if (localStorage.getItem('current-theme') === 'dark') {
+      document.documentElement.classList.add('dark')
+    }
+  }
+
+  function change_color_mode(){
+    if (localStorage.getItem('current-theme') === 'light') {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('current-theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('current-theme', 'light');
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // some constants used later
+
+    document
+      .getElementById("header-theme-button")
+      .addEventListener("click", change_color_mode);
+  });
 </script>

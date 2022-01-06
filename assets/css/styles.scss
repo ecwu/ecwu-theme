@@ -2,7 +2,13 @@
 
 @layer base {
     a {
-        @apply font-bold hover:bg-blue-900 hover:text-white visited:text-slate-500;
+        @apply font-bold hover:bg-blue-900 
+        hover:text-white
+        visited:text-slate-500 dark:visited:text-slate-700;
+    }
+
+    body {
+        @apply dark:bg-zinc-900;
     }
 
     h1 {
@@ -14,7 +20,7 @@
     }
 
     article {
-        @apply font-serif prose lg:prose-xl md:prose-lg mt-10 prose-ul:leading-5 prose-ol:leading-5;
+        @apply font-serif prose dark:prose-invert lg:prose-xl md:prose-lg mt-10 prose-ul:leading-5 prose-ol:leading-5;
     }
 
     .gallery{

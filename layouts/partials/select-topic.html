@@ -2,14 +2,14 @@
     <h3 class="text-2xl not-italic font-medium text-gray-900">Selected Topics</h3>
     <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
       {{ range .Site.Menus.topic }}
-      <div id="{{ .Identifier }}" class="mt-4 bg-white rounded-lg border border-gray-200">
+      <div id="{{ .Identifier }}" class="mt-4 bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-gray-700">
         <div class="p-5">
           <a href="{{.URL}}">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ .Name }}</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">{{ .Name }}</h5>
           </a>
-          <p class="mb-3 font-normal text-gray-700">{{ .Pre }}</p>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-200">{{ .Pre }}</p>
           <a href="{{.URL}}"
-            class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 visited:text-white">
+            class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white dark:text-black bg-blue-700 dark:bg-orange-400 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 visited:text-white">
             Read more
             <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
