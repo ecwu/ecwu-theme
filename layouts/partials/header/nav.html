@@ -1,16 +1,16 @@
 {{ $currentPage := . }}
 <nav aria-label="navbar">
-    <ol role="list" class="max-w-2xl mx-auto px-4 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8">
+    <ol role="list" class="max-w-2xl mx-auto px-4 flex flex-wrap items-center space-r-6 sm:px-6 lg:max-w-7xl lg:px-8">
         {{ $list := (.Site.Menus.nav) }}
         {{ $len := (len $list) }}
         {{ range $i, $e := $list }}
         <li>
-        <div class="flex items-center">
+        <div class="flex items-center justify-center">
             <a href="{{ .URL }}" class='mr-2 text-sm font-medium text-gray-900 dark:text-gray-200 visited:text-gray-900 dark:visited:text-gray-200'>{{ .Name }}</a>
             {{ if eq (add $i 1) $len }}
             {{ else }}
             <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" class="w-4 h-5 text-gray-300">
+                aria-hidden="true" class="mr-2 w-4 h-5 fill-gray-300">
                 <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
             </svg>
             {{ end }}

@@ -2,6 +2,6 @@
     <!-- <div
         class="bg-cover bg-center w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out" style='background-image: url({{ with .Get "image-url" }}{{ . }}{{ end }})'>
     </div> --> 
-    <img class="max-w-xl h-96 rounded-lg shadow-md bg-white dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out" src="{{ with .Get "image-url" }}{{ . }}{{ end }}"/>
+    <img class="max-w-max lg:h-96 h-48 rounded-lg shadow-md bg-white dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out" src="{{ with .Get "image-url" }}{{ . }}{{ end }}"/>
     <span class="px-2 dark:text-gray-300">{{ with .Get "image-description"}}{{ . }}{{ end}}</span>
 </div>

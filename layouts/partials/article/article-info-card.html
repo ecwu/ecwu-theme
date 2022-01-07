@@ -1,92 +1,114 @@
+{{ if .Params.showinfocard }}
 <div class="py-10">
-    <div class="bg-white dark:bg-gray-900 drop-shadow-lg overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-          <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-200">
-            Article Card
-          </h3>
-          <p class="mt-1 max-w-2xl text-sm text-gray-500">
-            For "<span class="italic">{{ .Title }}</span>"
-          </p>
-        </div>
-        <div class="border-t border-gray-200 dark:border-gray-700">
-          <dl>
+  <div class="bg-white dark:bg-gray-900 drop-shadow-lg overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 sm:px-6">
+      <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-200">
+        <a id="article-info-card"></a>
+        Article Card
+      </h3>
+      <p class="mt-1 max-w-2xl text-sm text-gray-500">
+        For "<span class="italic">{{ .Title }}</span>"
+      </p>
+    </div>
+    <div class="border-t border-gray-200 dark:border-gray-700">
+      <dl>
+        <table class="border-collapse table-fixed w-full">
+          <tbody class="bg-white dark:bg-gray-800">
             {{ if .Params.author }}
-            <div class="bg-gray-50 dark:bg-gray-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                Author
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 dark:text-gray-200 sm:mt-0 sm:col-span-2">
-                {{ .Params.author }}
-              </dd>
-            </div>
+            <tr class="px-4 py-5">
+              <th
+                class="text-left border-b border-gray-100 dark:border-gray-700 pl-6 dark:text-gray-500 w-1/3 px-4 py-5 text-sm font-medium text-gray-500">
+                Author</td>
+              <td
+                class="border-b font-bold border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400 mt-1 px-4 py-5 text-sm ">
+                {{ .Params.author }}</td>
+            </tr>
             {{ end }}
             {{ if not .Params.hidedate }}
-            <div class="bg-white dark:bg-gray-900 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                Publish & Update Date
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 dark:text-gray-200 sm:mt-0 sm:col-span-2">
-                2022-01-02 (Version 3, originally published on {{ .Date.Format "2006-01-02" }})
-              </dd>
-            </div>
-            {{end }}
-            {{ if .Params.categories }}
-            <div class="bg-gray-50 dark:bg-gray-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                Tags
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                <div class="container">
-                    {{ range .Params.tags }}
-                        <a class="rounded inline-block mb-2 py-1 px-2 text-xs font-medium text-white bg-gray-900 visited:text-white" href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
-                    {{ end }}
-                  </div>
-              </dd>
-            </div>
+            <tr class="px-4 py-5">
+              <th
+                class="text-left border-b border-gray-100 dark:border-gray-700 pl-6 dark:text-gray-500 w-1/3 px-4 py-5 text-sm font-medium text-gray-500">
+                Publish & Update Date</td>
+              <td
+                class="font-bold border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400 mt-1 px-4 py-5 text-sm">
+                {{ .Date.Format "2006-01-02" }}</td>
+            </tr>
             {{ end }}
-            <div class="bg-white dark:bg-gray-900 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                Extra Materials
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                <ul role="list" class="border border-gray-200 dark:border-gray-700 rounded-md divide-y divide-gray-200 dark:divide-gray-700">
-                  <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                    <div class="w-0 flex-1 flex items-center">
-                      <!-- Heroicon name: solid/paper-clip -->
-                      <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                      </svg>
-                      <span class="ml-2 flex-1 w-0 truncate text-gray-900 dark:text-gray-200">
-                        abxd-firmware-v1.0.zip
-                      </span>
-                    </div>
-                    <div class="ml-4 flex-shrink-0">
-                      <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
-                        Download
-                      </a>
-                    </div>
-                  </li>
-                  <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                    <div class="w-0 flex-1 flex items-center">
-                      <!-- Heroicon name: solid/paper-clip -->
-                      <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />  
-                    </svg>
-                      <span class="ml-2 flex-1 w-0 truncate text-gray-900 dark:text-gray-200">
-                        abxd documentation
-                      </span>
-                    </div>
-                    <div class="ml-4 flex-shrink-0">
-                      <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
-                        Check
-                      </a>
-                    </div>
-                  </li>
-                </ul>
-              </dd>
-            </div>
-          </dl>
-        </div>
-    </div>  
+            {{ if .Params.categories }}
+            <tr class="px-4 py-5">
+              <th
+                class="text-left border-b border-gray-100 dark:border-gray-700 pl-6 dark:text-gray-500 w-1/3 px-4 py-5 text-sm font-medium text-gray-500">
+                Tags</td>
+              <td
+                class="font-bold border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400 mt-1 px-4 py-5 text-sm">
+                {{ range .Params.tags }}
+                <a class="rounded inline-block mb-2 py-1 px-2 text-xs font-medium text-white bg-gray-900 visited:text-white dark:visited:text-white"
+                  href="{{ " /tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+                {{ end }}
+              </td>
+            </tr>
+            {{ end }}
+            {{ if .Params.extramaterials }}
+            <tr class="px-4 py-5">
+              <th
+                class="text-left border-b border-gray-100 dark:border-gray-700 pl-6 dark:text-gray-500 w-1/3 px-4 py-5 text-sm font-medium text-gray-500">
+                Extra Materials</td>
+              <td
+                class="font-bold border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400 mt-1 px-4 py-5 text-sm">
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  <ul role="list"
+                    class="border border-gray-200 dark:border-gray-700 rounded-md divide-y divide-gray-200 dark:divide-gray-700">
+                    {{ range .Params.extramaterials }}
+                    <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                      <div class="w-0 flex-1 flex items-center">
+                        {{ if (eq .type "file")}}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                          stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                        {{ end }}
+                        {{ if (eq .type "image")}}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                          stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+
+                        {{ end }}
+                        {{ if (eq .type "link")}}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                          stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+
+                        {{ end }}
+                        {{ if and (not (eq .type "file")) (not (eq .type "image")) (not (eq .type "link"))}}
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                        </svg>
+                        {{ end }}
+                        <span class="ml-2 flex-1 w-0 truncate text-gray-900 dark:text-gray-200">
+                          {{ .name }}
+                        </span>
+                      </div>
+                      <div class="ml-4 flex-shrink-0">
+                        <a href="{{ .url }}" class="font-medium text-indigo-600 hover:text-indigo-500">
+                          {{ if (eq .type "link")}}Check{{ else }}Download{{end}}
+                        </a>
+                      </div>
+                    </li>
+                    {{ end }}
+                  </ul>
+                </dd>
+              </td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
+    </div>
+  </div>
 </div>
+{{ end }}

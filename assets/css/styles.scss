@@ -30,6 +30,10 @@
     hr {
         @apply dark:border-gray-700
     }
+
+    tr:nth-child(odd):not(article *) {
+        @apply bg-gray-50 dark:bg-slate-800;
+    }
 }
 
 @tailwind components;

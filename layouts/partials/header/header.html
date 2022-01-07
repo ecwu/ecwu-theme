@@ -1,11 +1,8 @@
 <div class="pt-6">
-<!-- {{ $logo := resources.Get "img/ecwu.svg" }} -->
+    <h1 class="max-w-2xl mx-auto px-4 flex space-x-2 sm:px-6 lg:max-w-7xl lg:px-8 mb-5">
+        {{- partial "header/icon.html" . -}}
+    </h1>
 
-<h1 class="max-w-2xl mx-auto px-4 flex space-x-2 sm:px-6 lg:max-w-7xl lg:px-8 mb-5">
-    <!-- <img src="{{ $logo.RelPermalink }}" class="w-36"> -->
-    {{- partial "header/icon.html" . -}}
-</h1>
-
-{{- partial "header/nav.html" . -}}
-{{- partial "header/switch.html" . -}}
+    {{- partial "header/nav.html" . -}}
+    {{- partial "header/switch.html" . -}}
 </div>
