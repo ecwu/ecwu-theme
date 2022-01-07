@@ -31,10 +31,10 @@
                 Publish & Update Date</td>
               <td
                 class="font-bold border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400 mt-1 px-4 py-5 text-sm">
-                {{ .Date.Format "2006-01-02" }}</td>
+                {{ .Date.Format "2006-01-02" }}{{ if .Lastmod }} - <abbr title="Date of last major modification to this page">{{ .Lastmod.Format "2006-01-02" }}</abbr>{{ end }}</td>
             </tr>
             {{ end }}
-            {{ if .Params.categories }}
+            {{ if .Params.tags }}
             <tr class="px-4 py-5">
               <th
                 class="text-left border-b border-gray-100 dark:border-gray-700 pl-6 dark:text-gray-500 w-1/3 px-4 py-5 text-sm font-medium text-gray-500">
@@ -42,7 +42,7 @@
               <td
                 class="font-bold border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400 mt-1 px-4 py-5 text-sm">
                 {{ range .Params.tags }}
-                <a class="rounded inline-block mb-2 py-1 px-2 text-xs font-medium text-white bg-gray-900 visited:text-white dark:visited:text-white"
+                <a class="rounded inline-block mt-1 mb-1 py-1 px-2 text-xs font-medium text-white bg-gray-900 visited:text-white dark:visited:text-white"
                   href="{{ " /tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
                 {{ end }}
               </td>
@@ -106,6 +106,46 @@
               </td>
             </tr>
             {{ end }}
+            {{ if .Params.camera }}
+            <tr class="px-4 py-5">
+              <th
+                class="text-left border-b border-gray-100 dark:border-gray-700 pl-6 dark:text-gray-500 w-1/3 px-4 py-5 text-sm font-medium text-gray-500">
+                Camera</td>
+              <td
+                class="font-bold border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400 mt-1 px-4 py-5 text-sm">
+                {{ range .Params.camera }}
+                {{ . }}</a>
+                {{ end }}
+              </td>
+            </tr>
+            {{ end }}
+            {{ if .Params.lens }}
+            <tr class="px-4 py-5">
+              <th
+                class="text-left border-b border-gray-100 dark:border-gray-700 pl-6 dark:text-gray-500 w-1/3 px-4 py-5 text-sm font-medium text-gray-500">
+                Camera</td>
+              <td
+                class="font-bold border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400 mt-1 px-4 py-5 text-sm">
+                {{ range .Params.lens }}
+                {{ . }}</a>
+                {{ end }}
+              </td>
+            </tr>
+            {{ end }}
+            {{ if .Params.medium }}
+            <tr class="px-4 py-5">
+              <th
+                class="text-left border-b border-gray-100 dark:border-gray-700 pl-6 dark:text-gray-500 w-1/3 px-4 py-5 text-sm font-medium text-gray-500">
+                Medium</td>
+              <td
+                class="font-bold border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400 mt-1 px-4 py-5 text-sm">
+                {{ range .Params.medium }}
+                {{ . }}</a>
+                {{ end }}
+              </td>
+            </tr>
+            {{ end }}
+            {{ partial "article/copyright.html" . }}
           </tbody>
         </table>
     </div>

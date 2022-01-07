@@ -1,0 +1,40 @@
+{{ if .Params.copyright }}
+<tr class="px-4 py-5">
+  <th
+    class="text-left border-b border-gray-100 dark:border-gray-700 pl-6 dark:text-gray-500 w-1/3 px-4 py-5 text-sm font-medium text-gray-500">
+    License</td>
+  <td
+    class="font-bold border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400 mt-1 px-4 py-5 text-sm">
+    <ul role="list"
+    class="border border-gray-200 dark:border-gray-700 rounded-md divide-y divide-gray-200 dark:divide-gray-700">
+      {{ if (eq .Params.copyright "inherit") }}
+      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/inherit.html" . }}</li>
+      {{ end }}
+      {{ if (eq .Params.copyright "cc0") }}
+      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc0.html" . }}</li>
+      {{ end }}
+      {{ if (eq .Params.copyright "by") }}
+      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by.html" . }}</li>
+      {{ end }}
+      {{ if (eq .Params.copyright "bysa") }}
+      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by-sa.html" . }}</li>
+      {{ end }}
+      {{ if (eq .Params.copyright "bynd") }}
+      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by-nd.html" . }}</li>
+      {{ end }}
+      {{ if (eq .Params.copyright "bync") }}
+      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by-nc.html" . }}</li>
+      {{ end }}
+      {{ if (eq .Params.copyright "byncsa") }}
+      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by-nc-sa.html" . }}</li>
+      {{ end }}
+      {{ if (eq .Params.copyright "byncnd") }}
+      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by-nc-nd.html" . }}</li>
+      {{ end }}
+      {{ if (eq .Params.copyright "unsplash") }}
+      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/unsplash.html" . }}</li>
+      {{ end }}
+    </ul>
+  </td>
+</tr>
+{{ end }}
