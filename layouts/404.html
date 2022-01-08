@@ -1,3 +1,7 @@
 {{ define "main" }}
-<h1>404!</h1>
+{{ $logo := resources.Get "img/404.svg" }}
+<div class="my-10">
+  <img src="{{ $logo.RelPermalink }}" class="w-96">
+  <h1 class="text-gray-900 dark:text-gray-200">404!</h1>
+</div>
 {{ end }}
