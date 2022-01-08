@@ -43,7 +43,7 @@
                 class="font-bold border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400 mt-1 px-4 py-5 text-sm">
                 {{ range .Params.tags }}
                 <a class="rounded inline-block mt-1 mb-1 py-1 px-2 text-xs font-medium text-white bg-gray-900 visited:text-white dark:visited:text-white"
-                  href="{{ " /tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+                  href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
                 {{ end }}
               </td>
             </tr>

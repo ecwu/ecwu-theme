@@ -3,8 +3,10 @@
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       localStorage.setItem("current-theme", "dark");
       document.documentElement.classList.add('dark')
+      change_utt_color_mode();
     } else {
       localStorage.setItem("current-theme", "light");
+      change_utt_color_mode();
     }
   } else {
     if (localStorage.getItem('current-theme') === 'dark') {
@@ -16,10 +18,26 @@
     if (localStorage.getItem('current-theme') === 'light') {
       document.documentElement.classList.add('dark')
       localStorage.setItem('current-theme', 'dark');
+      change_utt_color_mode();
     } else {
       document.documentElement.classList.remove('dark')
       localStorage.setItem('current-theme', 'light');
+      change_utt_color_mode();
     }
+  }
+
+  function change_utt_color_mode(){
+    {{ if .Params.enablecomment }}
+    const theme = localStorage.getItem('current-theme') === 'light' ? 'github-light' : 'github-dark'
+    const message = {
+      type: 'set-theme',
+      theme: theme
+    };
+    const iframe = document.querySelector('.utterances-frame');
+    iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+    {{ else }}
+    console.log('utteranc.es is not enabled.')
+    {{ end }}
   }
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -29,4 +47,5 @@
       .getElementById("header-theme-button")
       .addEventListener("click", change_color_mode);
   });
+
 </script>
