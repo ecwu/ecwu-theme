@@ -3,10 +3,12 @@
     <head>
         {{- partial "head/head.html" . -}}
     </head>
-    <body>
+    <body class="transition-colors duration-300">
         {{- partial "header/header.html" . -}}
         {{ block "main" . }}
         {{ end }}
         {{- partial "footer/footer.html" . -}}
+        {{- partial "dev/dev-parameters.html" . -}}
+        {{- partial "dev/dev-size-indicator.html" . -}}
     </body>
 </html>

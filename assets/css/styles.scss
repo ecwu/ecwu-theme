@@ -34,8 +34,11 @@
     tr:nth-child(odd):not(article *) {
         @apply bg-gray-50 dark:bg-slate-800;
     }
+
+    img:not(.gallery *):not(figure *){
+        @apply invert-0 md:dark:invert dark:hover:invert-0 transition hover:delay-500 duration-300 ease-in-out
+    }
 }
 
 @tailwind components;
 @tailwind utilities;
-

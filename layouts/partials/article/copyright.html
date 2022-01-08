@@ -8,31 +8,31 @@
     <ul role="list"
     class="border border-gray-200 dark:border-gray-700 rounded-md divide-y divide-gray-200 dark:divide-gray-700">
       {{ if (eq .Params.copyright "inherit") }}
-      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/inherit.html" . }}</li>
+      <li class="pl-3 pr-4 py-3 flex flex-col sm:flex-row items-center justify-between text-sm">{{ partial "cc/inherit.html" . }}</li>
       {{ end }}
       {{ if (eq .Params.copyright "cc0") }}
-      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc0.html" . }}</li>
+      <li class="pl-3 pr-4 py-3 flex flex-col sm:flex-row items-center justify-between text-sm">{{ partial "cc/cc0.html" . }}</li>
       {{ end }}
       {{ if (eq .Params.copyright "by") }}
-      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by.html" . }}</li>
+      <li class="pl-3 pr-4 py-3 flex flex-col sm:flex-row items-center justify-between text-sm">{{ partial "cc/cc-by.html" . }}</li>
       {{ end }}
       {{ if (eq .Params.copyright "bysa") }}
-      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by-sa.html" . }}</li>
+      <li class="pl-3 pr-4 py-3 flex flex-col sm:flex-row items-center justify-between text-sm">{{ partial "cc/cc-by-sa.html" . }}</li>
       {{ end }}
       {{ if (eq .Params.copyright "bynd") }}
-      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by-nd.html" . }}</li>
+      <li class="pl-3 pr-4 py-3 flex flex-col sm:flex-row items-center justify-between text-sm">{{ partial "cc/cc-by-nd.html" . }}</li>
       {{ end }}
       {{ if (eq .Params.copyright "bync") }}
-      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by-nc.html" . }}</li>
+      <li class="pl-3 pr-4 py-3 flex flex-col sm:flex-row items-center justify-between text-sm">{{ partial "cc/cc-by-nc.html" . }}</li>
       {{ end }}
       {{ if (eq .Params.copyright "byncsa") }}
-      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by-nc-sa.html" . }}</li>
+      <li class="pl-3 pr-4 py-3 flex flex-col sm:flex-row items-center justify-between text-sm">{{ partial "cc/cc-by-nc-sa.html" . }}</li>
       {{ end }}
       {{ if (eq .Params.copyright "byncnd") }}
-      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/cc-by-nc-nd.html" . }}</li>
+      <li class="pl-3 pr-4 py-3 flex flex-col sm:flex-row items-center justify-between text-sm">{{ partial "cc/cc-by-nc-nd.html" . }}</li>
       {{ end }}
       {{ if (eq .Params.copyright "unsplash") }}
-      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">{{ partial "cc/unsplash.html" . }}</li>
+      <li class="pl-3 pr-4 py-3 flex flex-col sm:flex-row items-center justify-between text-sm">{{ partial "cc/unsplash.html" . }}</li>
       {{ end }}
     </ul>
   </td>
