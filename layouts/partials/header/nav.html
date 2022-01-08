@@ -1,6 +1,6 @@
 {{ $currentPage := . }}
-<nav aria-label="navbar">
-    <ol role="list" class="max-w-2xl mx-auto px-4 flex flex-wrap items-center space-r-6 sm:px-6 lg:max-w-7xl lg:px-8">
+<nav aria-label="navbar" class="mb-3 mr-8">
+    <ol role="list" class="flex flex-wrap">
         {{ $list := (.Site.Menus.nav) }}
         {{ $len := (len $list) }}
         {{ range $i, $e := $list }}

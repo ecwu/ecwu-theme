@@ -1,0 +1,13 @@
+
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{ with $related }}
+<section class="mb-10">
+<hr>
+<h2 class="text-gray-900 dark:text-gray-200">Related Posts</h2>
+<ul class="list-disc list-inside text-gray-900 dark:text-gray-200">
+    {{ range . }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+</ul>
+</section>
+{{ end }}

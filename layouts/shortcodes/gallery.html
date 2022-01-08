@@ -1,14 +1,14 @@
 {{ $loc := .Get 0  }}
 {{ if .IsNamedParams }}
-
-</div>
 </article>
 <div class="flex overflow-x-scroll pb-10 col-span-full hide-scroll-bar {{with .Get "g-class"}}{{.}}{{end}}">
 <div class="flex space-x-4 flex-nowrap gallery">
 {{ else if eq $loc "end" }}
+<div class="flex flex-col space-y-4">
+  <div class="w-24 lg:h-96 h-48"/>
+  </div>
 </div>
 </div>
-
-<div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
+</div>
 <article>
 {{ end }}

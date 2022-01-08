@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="w-content mb-10">
+    <section>
+        <h2 class="mb-12 text-2xl leading-7 tracking-tight text-gray-900 font-bold dark:text-gray-200">Series: {{ .Name }}
+        </h2>
+        <ul class="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start">
+            {{ range .Data.Pages }}
+            <li class="relative flex flex-col sm:flex-row xl:flex-col items-start">
+                <div class="order-1 sm:ml-6 xl:ml-0">
+                    <div style="background-image: url({{ if .Params.featureimage }}{{.Params.featureimage}}{{else}}https://source.unsplash.com/collection/559527{{end}})"
+                        class="mb-6 shadow-md rounded-lg bg-gray-50 w-64 h-36 bg-cover bg-center">
+                    </div>
+                    <div class="prose prose-sm text-gray-600 dark:prose-dark">
+                        <p>{{ .Title }}</p>
+                    </div><a
+                        class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900 focus:ring-gray-500 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 mt-6"
+                        href="{{ .RelPermalink }}">Read<svg
+                            class="overflow-visible ml-3 text-gray-300 group-hover:text-gray-400 dark:text-gray-500 dark:group-hover:text-gray-400"
+                            width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M0 0L3 3L0 6"></path>
+                        </svg></a>
+                </div>
+            </li>
+            {{ end }}
+        </ul>
+    </section>
+</div>
+{{ end }}

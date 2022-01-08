@@ -2,13 +2,14 @@
 <html>
     <head>
         {{- partial "head/head.html" . -}}
+        {{- partial "head/head.extra.html" . -}}
     </head>
     <body class="transition-colors duration-300">
         {{- partial "header/header.html" . -}}
         {{ block "main" . }}
         {{ end }}
         {{- partial "footer/footer.html" . -}}
-        {{- partial "dev/dev-parameters.html" . -}}
-        {{- partial "dev/dev-size-indicator.html" . -}}
+        <!-- {{- partial "dev/dev-parameters.html" . -}}
+        {{- partial "dev/dev-size-indicator.html" . -}} -->
     </body>
 </html>

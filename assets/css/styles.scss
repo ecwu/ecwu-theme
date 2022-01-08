@@ -8,7 +8,7 @@
     }
 
     body {
-        @apply dark:bg-zinc-900;
+        @apply dark:bg-zinc-900 pl-[12.5%] mr-5;
     }
 
     h1 {
@@ -19,8 +19,16 @@
         @apply italic my-6 font-medium text-4xl;
     }
 
+    .w-content {
+        @apply max-w-[90%] md:max-w-[55%];
+    }
+
     article {
-        @apply font-serif prose dark:prose-invert lg:prose-xl md:prose-lg mt-10 prose-ul:leading-5 prose-ol:leading-5;
+        @apply font-serif
+        prose dark:prose-invert lg:prose-xl md:prose-lg
+        prose-ul:leading-5 prose-ol:leading-5
+        mt-10 mb-10
+        max-w-[90%] md:max-w-[55%];
     }
 
     .gallery{

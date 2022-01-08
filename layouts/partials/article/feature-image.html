@@ -1,6 +1,5 @@
 {{ if .Params.featureimage }}
-<div>
-  <figure class="mt-8 w-screen h-96 relative overflow-hidden">
+  <figure class="ml-[-12.5vw] mt-12 mb-12 h-96 w-screen relative overflow-hidden">
     <img class="object-cover object-center w-full h-96" src="{{ .Params.featureimage }}" alt="Featured Images">
     {{ if .Params.unsplashfeatureimage }}
     <figcaption class="text-sm absolute bottom-0 right-0 pr-5 bg-gray-900 text-gray-500 px-2">
@@ -8,5 +7,4 @@
     </figcaption>
     {{ end }}
   </figure>
-</div>
 {{ end }}

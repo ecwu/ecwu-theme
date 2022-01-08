@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="w-content my-10">
+  <ul class="sm:space-y-6">
+    {{ range $key, $value := .Data.Terms.ByCount }}
+    <li
+      class="-mx-4 p-4 pb-10 bg-gray-50 flex flex-col-reverse items-start sm:mx-0 sm:p-10 sm:rounded-2xl xl:flex-row dark:bg-gray-800/50">
+      <div class="flex-auto">
+        <h3 class="mb-4 text-sm leading-6 font-semibold text-blue-500">Series</h3>
+        <p class="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-200">{{ $value.Name}}</p>
+        <div class="mb-6 text-sm leading-6 text-gray-600 space-y-4 dark:text-gray-400">
+          <p>Containing {{ $value.Count }} post</p>
+        </div><a
+          class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-gray-700 text-white hover:bg-gray-800 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-400 dark:focus:ring-offset-0 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500"
+          href="{{ $value.Name| urlize }}">Learn more<span class="sr-only">, Refactoring UI</span><svg
+            class="overflow-visible ml-3 text-gray-300 group-hover:text-gray-200 dark:text-gray-500 dark:group-hover:text-gray-400"
+            width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M0 0L3 3L0 6"></path>
+          </svg></a>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

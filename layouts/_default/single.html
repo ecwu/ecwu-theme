@@ -1,16 +1,12 @@
 {{ define "main" }}
 {{- partial "article/feature-image.html" . -}}
-<div
-    class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
-    <div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
-        {{- partial "article/article-meta.html" . -}}
-        <article>
-            {{ partial "article/toc.html" . }}
-            {{ .Content }}
-        </article>
-        {{- partial "article/article-info-card.html" . -}}
-        {{- partial "misc/comment.html" . -}}
-        {{- partial "related-post.html" . -}}
-    </div>
-    </div>
+{{- partial "article/article-meta.html" . -}}
+{{- partial "article/series.html" . -}}
+<article>
+    {{ partial "article/toc.html" . }}
+    {{ .Content }}
+</article>
+{{- partial "article/article-info-card.html" . -}}
+{{- partial "misc/comment.html" . -}}
+{{- partial "article/related-post.html" . -}}
 {{ end }}
