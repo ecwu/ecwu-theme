@@ -2098,6 +2098,11 @@ img:not(.gallery *):not(figure *):hover {
   margin-right: auto;
 }
 
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }

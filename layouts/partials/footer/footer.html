@@ -2,12 +2,9 @@
   <footer class="relative mb-6 text-gray-900 dark:text-gray-200">
     <hr class="pb-5">
     {{- partial "footer/social.html" . -}}
-    <p class="text-sm mb-4">
-      {{ if .Site.GoogleAnalytics }} Google Analytics enabled; {{end}} <a href="/page/changelog">Website changelog</a>.
-    </p>
     <p>
       Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/ecwu/ecwu-theme">ecwu-theme</a>. Build by <a href="https://github.com/features/actions">GitHub
-        Action</a>.
+        Action</a> at: {{ now.Format "2006-01-02 15:04 MST" }}.
     </p>
     <p>
       {{ with .Site.Params.copyright }}
@@ -24,5 +21,8 @@
       <a href="http://beian.miit.gov.cn/">{{ .Site.Params.beianMessage }}</a>
     </p>
     {{end}}
+    <p class="text-sm my-4">
+      {{ if .Site.GoogleAnalytics }} Google Analytics enabled; {{end}}  <a href="/page/changelog">site changelog</a>.
+    </p>
   </footer>
 </div>
