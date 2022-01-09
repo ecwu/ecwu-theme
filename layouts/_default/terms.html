@@ -3,11 +3,8 @@
 <h2 class="text-gray-900 dark:text-gray-200">"{{.Type | humanize}}" By Frequency</h2>
 <section>
     {{ range $key, $value := .Data.Terms.ByCount }}
-    <div class="border-blue-700 text-gray-900 dark:text-gray-200 border px-3 py-1 mt-2 mb-2 rounded items-center inline-block">
-      <a href="{{ $value.Name| urlize }}">
-        {{ $value.Name}}
-      </a> <span class="bg-gray-500 px-1 rounded text-gray-900 dark:text-gray-200 text-xs ml-2">{{ $value.Count }}</span>
-    </div>
+    <a class="border border-blue-700  shadow-md text-sm text-gray-900 dark:text-gray-200 font-bold py-2 px-4 mt-2 mb-2 rounded inline-block" 
+                href="{{ $value.Name| urlize }}">{{ $value.Name }} ({{ $value.Count }})</a>
     {{ end }}
 </section>
 </div>
