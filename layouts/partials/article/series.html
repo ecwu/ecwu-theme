@@ -36,6 +36,9 @@
         {{ if $.Scratch.Get "next_link" }}
             <a href="{{ $.Scratch.Get "next_link" }}">Next:{{ $.Scratch.Get "next_title" }}</i></a></p>
         {{ end }}
+    {{ else }}
+    <p>This post is part of the <b>{{ .Params.series }}</b> series.</p>
+    <p>
     {{ end }}
   </div>
 {{ end }}

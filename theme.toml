@@ -8,7 +8,7 @@ description = ""
 homepage = "http://ecwuuuuu.com/"
 tags = []
 features = []
-min_version = "0.41.0"
+min_version = "0.89.4"
 
 [author]
   name = "ECWU"

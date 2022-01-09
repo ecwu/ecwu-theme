@@ -2206,6 +2206,10 @@ img:not(.gallery *):not(figure *):hover {
   display: none;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
 .h-36 {
   height: 9rem;
 }
@@ -2224,10 +2228,6 @@ img:not(.gallery *):not(figure *):hover {
 
 .h-5 {
   height: 1.25rem;
-}
-
-.h-96 {
-  height: 24rem;
 }
 
 .h-1 {
@@ -2296,10 +2296,6 @@ img:not(.gallery *):not(figure *):hover {
 
 .w-6 {
   width: 1.5rem;
-}
-
-.w-96 {
-  width: 24rem;
 }
 
 .max-w-xs {
@@ -2655,11 +2651,6 @@ img:not(.gallery *):not(figure *):hover {
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-}
-
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 }
 
 .pb-10 {
