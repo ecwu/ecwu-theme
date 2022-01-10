@@ -46,6 +46,12 @@
     img:not(.gallery *):not(figure *){
         @apply invert-0 md:dark:invert dark:hover:invert-0 transition hover:delay-500 duration-300 ease-in-out
     }
+
+    .text-primary{
+        @apply text-gray-900 dark:text-gray-200
+        hover:text-gray-900 dark:hover:dark:text-gray-200
+        visited:text-gray-900 dark:visited:text-gray-200;
+    }
 }
 
 @tailwind components;

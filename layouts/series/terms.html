@@ -2,22 +2,43 @@
 <div class="w-content my-10">
   <ul class="sm:space-y-6">
     {{ range $key, $value := .Data.Terms.ByCount }}
+    {{ $bgimg := newScratch }}
+    {{range .Pages}}
+      {{if .Page.Params.featureimage }}
+      {{ $bgimg.Set (string (len $bgimg.Values)) .Params.featureimage }}
+      {{end}}
+    {{end}}
     <li
       class="-mx-4 p-4 pb-10 bg-gray-50 flex flex-col-reverse items-start sm:mx-0 sm:p-10 sm:rounded-2xl xl:flex-row dark:bg-gray-800/50">
-      <div class="flex-auto">
-        <h3 class="mb-4 text-sm leading-6 font-semibold text-blue-500">Series</h3>
-        <p class="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-200">{{ $value.Name}}</p>
-        <div class="mb-6 text-sm leading-6 text-gray-600 space-y-4 dark:text-gray-400">
-          <p>Containing {{ $value.Count }} post</p>
-        </div><a
-          class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-gray-700 text-white hover:bg-gray-800 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-400 dark:focus:ring-offset-0 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500"
-          href="{{ $value.Name| urlize }}">Learn more<span class="sr-only">, Refactoring UI</span><svg
-            class="overflow-visible ml-3 text-gray-300 group-hover:text-gray-200 dark:text-gray-500 dark:group-hover:text-gray-400"
-            width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M0 0L3 3L0 6"></path>
-          </svg></a>
-      </div>
+        <div class="max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2">
+          <div class="relative p-3 col-start-1 row-start-1 flex flex-col-reverse rounded-lg bg-gradient-to-t from-black/75 via-black/0 sm:bg-none sm:row-start-2 sm:p-0 lg:row-start-1">
+            <h1 class="mb-0 md:mb-6 mt-1 text-lg font-semibold text-white sm:text-gray-900 md:text-2xl dark:sm:text-white">{{ $value.Name | humanize |title }}</h1>
+            <p class="text-sm leading-4 font-medium text-white sm:text-gray-500 dark:sm:text-gray-400">Series</p>
+          </div>
+          <figure class="grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0">
+            <img src="{{ if gt (len $bgimg.Values) 0 }}{{ index $bgimg.Values (string 0) }}{{else}}{{site.Site.Params.placeholderUnsplashCollection}}{{end}}" alt="" class="w-96 h-60 object-cover rounded-lg sm:h-52 col-span-full" loading="lazy">
+          </figure>
+          <dl class="mt-4 text-xs font-medium flex items-center row-start-2 sm:mt-1 sm:row-start-3 md:mt-2.5 lg:row-start-2">
+            <dt class="sr-only">Number of Posts</dt>
+            <dd class="text-blue-600 flex items-center dark:text-blue-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 flex items-center dark:text-blue-400 h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+              </svg>
+              <span>{{ $value.Count }} <span class="text-gray-400 font-normal">post{{ if gt $value.Count 1 }}(s){{end}}</span></span>
+            </dd>
+            <dt class="sr-only">Last Update</dt>
+            <dd class="flex items-center text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {{ $firstChild := index .Pages 0 }}
+              {{ $firstChild.Params.publishDate.Format "2006-01-02 15:04 MST" }}
+            </dd>
+          </dl>
+          <div class="mt-4 col-start-1 row-start-3 self-center sm:mt-0 sm:col-start-2 sm:row-start-2 sm:row-span-2 lg:mt-6 lg:col-start-1 lg:row-start-3 lg:row-end-4">
+            <a type="button" href="{{ $value.Name| urlize }}" class="border border-blue-500 text-primary leading-6 font-medium py-2 px-3 rounded-lg">Check Series</a>
+          </div>
+        </div>
     </li>
     {{ end }}
   </ul>
