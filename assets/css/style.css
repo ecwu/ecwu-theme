@@ -2153,16 +2153,16 @@ img:not(.gallery *):not(figure *):hover {
   margin-bottom: 1rem;
 }
 
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
 .mb-12 {
@@ -2209,6 +2209,10 @@ img:not(.gallery *):not(figure *):hover {
   margin-left: 1rem;
 }
 
+.mt-16 {
+  margin-top: 4rem;
+}
+
 .ml-\[-12\.5vw\] {
   margin-left: -12.5vw;
 }
@@ -2237,20 +2241,16 @@ img:not(.gallery *):not(figure *):hover {
   margin-right: 0.5rem;
 }
 
-.-mr-1 {
-  margin-right: -0.25rem;
-}
-
-.mt-16 {
-  margin-top: 4rem;
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .mb-16 {
   margin-bottom: 4rem;
 }
 
-.mt-10 {
-  margin-top: 2.5rem;
+.-mr-1 {
+  margin-right: -0.25rem;
 }
 
 .block {
@@ -2473,10 +2473,6 @@ img:not(.gallery *):not(figure *):hover {
 
 .gap-4 {
   gap: 1rem;
-}
-
-.gap-5 {
-  gap: 1.25rem;
 }
 
 .gap-3 {
@@ -3365,14 +3361,6 @@ img:not(.gallery *):not(figure *):hover {
     display: none;
   }
 
-  .md\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .md\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .md\:grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
@@ -3393,12 +3381,12 @@ img:not(.gallery *):not(figure *):hover {
     grid-column: span 2 / span 2;
   }
 
-  .lg\:col-start-1 {
-    grid-column-start: 1;
-  }
-
   .lg\:col-start-2 {
     grid-column-start: 2;
+  }
+
+  .lg\:col-start-1 {
+    grid-column-start: 1;
   }
 
   .lg\:row-span-6 {
@@ -3451,10 +3439,6 @@ img:not(.gallery *):not(figure *):hover {
 
   .lg\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .lg\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .lg\:gap-6 {
