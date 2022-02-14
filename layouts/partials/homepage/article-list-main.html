@@ -6,7 +6,7 @@
             {{ range first 5 .Pages }}
             <li class="text-gray-900 dark:text-gray-200">
                 <span class="text-gray-700 dark:text-gray-400">{{ .Date.Format "06' Jan 2" }} &middot;</span>
-                <a href="{{ .RelPermalink }}">{{.Title}}</a>
+                <a href="{{ .RelPermalink }}">{{.Title}}{{if .Draft}} :: <abbr title="This post will not build in the production environment">Draft</abbr>{{end}}</a>
             </li>
             {{ end }}
             <div><a class="text-gray-700 dark:text-gray-400" href="{{ .RelPermalink }}">All >></a></div>

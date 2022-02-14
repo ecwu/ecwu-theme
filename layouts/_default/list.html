@@ -14,7 +14,7 @@
                         <ul class="list-disc list-inside indent-12">
                             <li>
                                 <span class="list-date">{{ .Date.Format "Jan 2" }} &middot;</span>
-                                <a href="{{ .RelPermalink }}">{{.Title}}</a>
+                                <a href="{{ .RelPermalink }}">{{.Title}}{{if .Draft}} :: <abbr title="This post will not build in the production environment">Draft</abbr>{{end}}</a>
                             </li>
                         </ul>
                         {{ end }}
