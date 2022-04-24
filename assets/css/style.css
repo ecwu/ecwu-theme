@@ -2183,11 +2183,6 @@ img:not(.gallery *):not(figure *):hover {
   margin-bottom: 1rem;
 }
 
-.mx-5 {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
-}
-
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
@@ -2293,14 +2288,6 @@ img:not(.gallery *):not(figure *):hover {
   margin-right: -0.25rem;
 }
 
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
-.mr-3 {
-  margin-right: 0.75rem;
-}
-
 .block {
   display: block;
 }
@@ -2385,14 +2372,6 @@ img:not(.gallery *):not(figure *):hover {
   height: 1rem;
 }
 
-.h-7 {
-  height: 1.75rem;
-}
-
-.h-10 {
-  height: 2.5rem;
-}
-
 .w-64 {
   width: 16rem;
 }
@@ -2445,14 +2424,6 @@ img:not(.gallery *):not(figure *):hover {
   width: 1rem;
 }
 
-.w-7 {
-  width: 1.75rem;
-}
-
-.w-10 {
-  width: 2.5rem;
-}
-
 .w-\[55\%\] {
   width: 55%;
 }
@@ -2469,10 +2440,6 @@ img:not(.gallery *):not(figure *):hover {
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
-}
-
-.max-w-\[55\%\] {
-  max-width: 55%;
 }
 
 .flex-1 {
