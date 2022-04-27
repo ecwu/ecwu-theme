@@ -2,7 +2,7 @@
 {{ if or .Params.math }}
   {{ partial "misc/math.html" . }}
 {{ end }}
-
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 {{ $styles := resources.Get "css/style.css"}}
 {{ if .Site.IsServer }}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
