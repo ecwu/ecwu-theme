@@ -1,12 +1,14 @@
+
+{{ range $idx, $section_name := .Site.Params.homePageSection }}
 <div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
-    <h3 class="text-2xl font-medium text-gray-900 dark:text-gray-200">Posts</h3>
+    <h3 class="text-2xl font-medium text-gray-900 dark:text-gray-200">{{ $section_name | humanize }}</h3>
     <div class="mt-4">
         <ul role="list" class="text-lg pl-4 list-disc space-y-2">
-            {{ range ( where .Pages "Section" "post" ) }}
-            {{ range first 5 .Pages }}
+            {{ range $articles := ( where $.Pages "Section" $section_name ) }}
+            {{ range $article := first $.Site.Params.homePageSectionArticleCount $articles.Pages }}
             <li class="text-gray-900 dark:text-gray-200">
                 <span class="text-gray-700 dark:text-gray-400">{{ .Date.Format "06' Jan 2" }} &middot;</span>
-                <a href="{{ .RelPermalink }}">{{.Title}}{{if .Draft}} :: <abbr title="This post will not build in the production environment">Draft</abbr>{{end}}</a>
+                <a href="{{ $article.RelPermalink }}">{{$article.Title}}{{if $article.Draft}} :: <abbr title="This post will not build in the production environment">Draft</abbr>{{end}}</a>
             </li>
             {{ end }}
             <div><a class="text-gray-700 dark:text-gray-400" href="{{ .RelPermalink }}">All >></a></div>
@@ -14,8 +16,10 @@
         </ul>
     </div>
 </div>
+{{ end }}
 
-<div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
+
+<!-- <div class="py-10 lg:pt-6 lg:col-start-1 lg:col-span-2 lg:pr-8">
     <h3 class="text-2xl font-medium text-gray-900 dark:text-gray-200">Photography</h3>
     <div class="mt-4">
         <ul role="list" class="text-lg pl-4 list-disc space-y-2">
@@ -30,4 +34,4 @@
             {{ end }}
         </ul>
     </div>
-</div>
+</div> -->

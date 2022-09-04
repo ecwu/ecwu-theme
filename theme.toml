@@ -4,12 +4,26 @@
 name = "ECWU Theme"
 license = "MIT"
 licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
-description = ""
-homepage = "http://ecwuuuuu.com/"
-tags = []
-features = []
+description = "A clean Hugo theme"
+homepage = "http://github.com/ecwu/ecwu-theme"
+tags = [
+  'responsive',
+  'clean',
+  'light',
+  'dark',
+  'minimalist',
+  'blog'
+]
+features = [
+  'responsive',
+  'blog',
+  'table-of-contents',
+  'archive',
+  'cover',
+  'social-icons',
+]
 min_version = "0.89.4"
 
 [author]
-  name = "ECWU"
+  name = "Zhenghao Wu"
   homepage = "http://ecwuuuuu.com/"

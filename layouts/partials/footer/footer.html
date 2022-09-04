@@ -3,26 +3,27 @@
     <hr class="pb-5">
     {{- partial "footer/social.html" . -}}
     <p>
-      Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/ecwu/ecwu-theme">ecwu-theme</a>. Build by <a href="https://github.com/features/actions">GitHub
-        Action</a> at: {{ now.Format "2006-01-02 15:04 MST" }}.
+      
+      {{ if .Site.Params.footer.showPoweredBy }}Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/ecwu/ecwu-theme">ecwu-theme</a>.{{ end }}
+      Build {{ with $.Site.Params.footer.buildBy }}by {{ . | safeHTML }}{{ end }} at: {{ now.Format "2006-01-02 15:04 MST" }}.
     </p>
     <p>
-      {{ with .Site.Params.copyright }}
+      {{ with .Site.Params.footer.copyright }}
       {{ . | safeHTML }}
       {{ else }}
       &copy;{{now.Format "2006"}}
-      {{ with .Site.Params.copyrightHolder }}{{ . }}{{end}}.
+      {{ with .Site.Params.footer.copyrightHolder }}{{ . }}{{end}}.
       All rights reserved.
       {{end}}
 
     </p>
-    {{ if .Site.Params.showBeian }}
+    {{ if .Site.Params.footer.showBeian }}
     <p>
-      <a href="http://beian.miit.gov.cn/">{{ .Site.Params.beianMessage }}</a>
+      <a href="http://beian.miit.gov.cn/">{{ .Site.Params.footer.beianMessage }}</a>
     </p>
     {{end}}
     <p class="text-sm my-4">
-      {{ if .Site.GoogleAnalytics }} Google Analytics enabled; {{end}}  <a href="/page/changelog">site changelog</a>.
+      {{ if .Site.GoogleAnalytics }} Google Analytics enabled {{end}} {{if and .Site.GoogleAnalytics .Site.Params.footer.changelogUrl }} | {{end}}{{ with .Site.Params.footer.changelogUrl }}<a href="{{ . }}">site changelog</a>{{ end }}
     </p>
   </footer>
 </div>
