@@ -1,11 +1,13 @@
 {{ define "main" }}
 {{- partial "article/feature-image.html" . -}}
+<main>
 {{- partial "article/article-meta.html" . -}}
 {{- partial "article/series.html" . -}}
 <article>
     {{ partial "article/toc.html" . }}
     {{ .Content }}
 </article>
+</main>
 {{- partial "article/article-info-card.html" . -}}
 {{- partial "misc/comment.html" . -}}
 {{- partial "article/related-post.html" . -}}
