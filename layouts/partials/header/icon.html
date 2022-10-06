@@ -1,6 +1,4 @@
-
-
-<a class="flex flex-row flex-wrap gap-2" href="{{ .Site.BaseURL }}">
+<a href="{{ .Site.BaseURL }}">
     {{ if not (or .Site.Params.titleLogo .Site.Params.titleString) }}
     <svg class="w-36 fill-gray-900 dark:fill-gray-200" fill="currentColor" viewBox="0 0 204.24 43.44" xmlns="http://www.w3.org/2000/svg">
         <path d="M0,43.08V0.36h18.24v5.76H6.12v12.54h10.56v5.76H6.12v12.54h12.12v6.12H0z"/>
@@ -23,4 +21,3 @@
     {{ end }}
     {{ end }}
 </a>
-
