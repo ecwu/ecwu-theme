@@ -1,8 +1,8 @@
 {{ define "main" }}
 {{- partial "article/feature-image.html" . -}}
-<main>
 {{- partial "article/article-meta.html" . -}}
 {{- partial "article/series.html" . -}}
+<main>
 <article>
     {{ partial "article/toc.html" . }}
     {{ .Content }}
