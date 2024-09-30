@@ -1,15 +1,15 @@
 <!-- Load MathJax, if necessary. -->
 {{ if or .Params.math }}
-  {{ partial "misc/math.html" . }}
+{{ partial "misc/math.html" . }}
 {{ end }}
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 {{ $styles := resources.Get "css/style.css"}}
-{{ if .Site.IsServer }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+{{ if hugo.IsServer }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 {{ else }}
-    {{ $styles := $styles | minify | fingerprint }}
-    <!-- <link rel="stylesheet" href="{{ $styles.RelPermalink }}"> -->
-    <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+{{ $styles := $styles | minify | fingerprint }}
+<!-- <link rel="stylesheet" href="{{ $styles.RelPermalink }}"> -->
+<link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
 {{ end }}
 {{- partial "head/meta.html" . -}}
 {{- partial "head/toggle-darkmode.html" . -}}

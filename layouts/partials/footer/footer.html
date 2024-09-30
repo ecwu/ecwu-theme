@@ -23,7 +23,7 @@
     </p>
     {{end}}
     <p class="text-sm my-4">
-      {{ if .Site.GoogleAnalytics }} Google Analytics enabled {{end}} {{if and .Site.GoogleAnalytics .Site.Params.footer.changelogUrl }} | {{end}}{{ with .Site.Params.footer.changelogUrl }}<a href="{{ . }}">site changelog</a>{{ end }}
+      {{ if .Site.Config.Services.GoogleAnalytics.ID }} Google Analytics enabled {{end}} {{if and .Site.Config.Services.GoogleAnalytics.ID .Site.Params.footer.changelogUrl }} | {{end}}{{ with .Site.Params.footer.changelogUrl }}<a href="{{ . }}">site changelog</a>{{ end }}
     </p>
   </footer>
 </div>
