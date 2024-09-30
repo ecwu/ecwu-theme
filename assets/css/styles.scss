@@ -11,6 +11,10 @@
         @apply dark:bg-zinc-900 pl-[12.5%] mr-5;
     }
 
+    .nav-title {
+        @apply my-6 font-bold text-6xl;
+    }
+
     h1 {
         @apply my-6 font-bold text-6xl;
     }
