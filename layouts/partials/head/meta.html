@@ -2,5 +2,5 @@
 <title>{{ if .IsHome }}Home - {{ else }}{{ if .Page.Title }}{{ .Page.Title }} - {{ end }}{{ end }} {{ .Site.Params.subtitle }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="{{ .Site.Params.Description }}">
-<meta name="keywords" content="{{ range .Params.tags }}{{ . }},{{ end }}">
+<meta name="keywords" content="{{- if .Params.keywords }}{{ range $i, $e := .Params.keywords }}{{ if $i }},{{ end }}{{ $e }}{{ end }}{{- else }}{{ range $i, $e := .Params.tags }}{{ if $i }},{{ end }}{{ $e }}{{ end }}{{- end }}">
 <meta name="author" content="{{ .Site.Title }}">
