@@ -3,7 +3,7 @@
   <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols2 xl:grid-cols-2 gap-3">
     {{ range .Site.Menus.topic }}
     <div id="{{ .Identifier }}"
-      class="mt-4 bg-white dark:bg-gray-900 rounded-lg border shadow-xl ring-1 ring-gray-900/5">
+      class="mt-4 bg-white dark:bg-gray-900 rounded-lg shadow-xl ring-1 ring-gray-900/5">
       <div class="p-5">
         <a href="{{.URL}}">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">{{ .Name }}</h5>

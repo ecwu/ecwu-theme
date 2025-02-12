@@ -1,0 +1,12 @@
+ {{ $id := .Get "id" }}
+ {{ $site := .Get "site" }}
+ 
+ {{ if eq $site "youtube" }}
+ <div class="my-5">
+    <iframe class="aspect-video w-full h-96 max-w-full" src="https://www.youtube.com/embed/{{ $id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ </div>
+{{ else if eq $site "bilibili" }}
+ <div class="my-5">
+    <iframe  class="aspect-video w-full h-96 max-w-full" src="//player.bilibili.com/player.html?bvid={{ $id }}&as_wide=1&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+ </div>
+ {{ end }}

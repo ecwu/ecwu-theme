@@ -1,4 +1,10 @@
-@tailwind base;
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+@config '../../../../tailwind.config.js';
+
+@theme {
+    --color-ecwu-blue: #0052D9;
+}
 
 @layer base {
     a {
@@ -58,6 +64,3 @@
     }
 
 }
-
-@tailwind components;
-@tailwind utilities;
