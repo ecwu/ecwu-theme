@@ -53,8 +53,14 @@
         @apply bg-gray-50 dark:bg-slate-800;
     }
 
-    img:not(.gallery *):not(figure *):not(.friends *){
-        @apply invert-0 md:dark:invert dark:hover:invert-0 transition hover:delay-500 duration-300 ease-in-out
+    img:not(.gallery *):not(figure *):not(.friends *):not(.no-dark-invert){
+        @apply invert-0 md:dark:filter 
+               md:dark:invert 
+               md:dark:hue-rotate-180 
+               md:dark:saturate-50
+               md:dark:brightness-90
+               dark:hover:invert-0 
+               transition hover:delay-500 duration-300 ease-in-out
     }
 
     .text-primary{

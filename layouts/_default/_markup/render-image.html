@@ -1,0 +1,10 @@
+{{ $src := .Destination }}
+{{ $classes := slice }}
+{{ if in .Title "no-dark-invert" }}
+  {{ $classes = $classes | append "no-dark-invert" }}
+{{ end }}
+
+<img src="{{ $src }}" 
+     {{ with .Text }}alt="{{ . }}"{{ end }} 
+     {{ if gt (len $classes) 0 }}class="{{ delimit $classes " " }}"{{ end }}
+     {{ with .Title }}{{ if not (in . "no-dark-invert") }}title="{{ . }}"{{ end }}{{ end }}>
