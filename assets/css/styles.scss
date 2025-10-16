@@ -1,66 +1,175 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@config '../../../../tailwind.config.js';
+
+@source "../../../../themes/ecwu-theme/layouts";
+@source "../../../../content/post";
 
 @theme {
     --color-ecwu-blue: #0052D9;
+    
+    /* Font family configuration */
+    --font-family-serif: et-book, Bembo, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+}
+
+@utility bg-stripes {
+    background-image: linear-gradient(45deg, var(--stripes-color) 12.50%, transparent 12.50%, transparent 50%, var(--stripes-color) 50%, var(--stripes-color) 62.50%, transparent 62.50%, transparent 100%);
+    background-size: 5.66px 5.66px;
 }
 
 @layer base {
     a {
-        @apply font-bold hover:bg-blue-900 
-        hover:text-white dark:hover:text-white
-        visited:text-zinc-400 dark:visited:text-slate-600;
+        font-weight: 700;
+        &:hover {
+            background-color: theme(colors.blue.900);
+            color: white;
+        }
+        &:visited {
+            color: theme(colors.zinc.400);
+        }
+        @media (prefers-color-scheme: dark) {
+            &:hover {
+                color: white;
+            }
+            &:visited {
+                color: theme(colors.slate.600);
+            }
+        }
     }
 
     body {
-        @apply dark:bg-zinc-900 pl-[12.5%] mr-5;
+        padding-left: 12.5%;
+        margin-right: 1.25rem;
+        @media (prefers-color-scheme: dark) {
+            background-color: theme(colors.zinc.900);
+        }
     }
 
     .nav-title {
-        @apply my-6 font-bold text-6xl;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        font-size: 3.75rem;
+        line-height: 1;
     }
 
     h1 {
-        @apply my-6 font-bold text-6xl;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        font-size: 3.75rem;
+        line-height: 1;
     }
     
     h2 {
-        @apply italic my-6 font-medium text-4xl;
+        font-style: italic;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+        font-size: 2.25rem;
+        line-height: 2.5rem;
     }
 
     .w-content {
-        @apply max-w-[90%] md:max-w-[55%];
+        max-width: 90%;
+        @media (min-width: 768px) {
+            max-width: 55%;
+        }
     }
 
     article {
-        @apply font-serif
-        prose dark:prose-invert lg:prose-xl md:prose-lg
-        prose-ul:leading-5 prose-ol:leading-5
-        mt-10 mb-10
-        max-w-[90%] md:max-w-[55%];
+        font-family: var(--font-family-serif);
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+        max-width: 90% !important;
+        
+        @media (min-width: 768px) {
+            max-width: 55% !important;
+        }
     }
 
-    .gallery{
-        @apply h-2/5 overflow-x-visible;
+    .gallery {
+        height: 40%;
+        overflow-x: visible;
     }
 
     hr {
-        @apply dark:border-gray-700
+        @media (prefers-color-scheme: dark) {
+            border-color: theme(colors.gray.700);
+        }
     }
 
     tr:nth-child(odd):not(article *) {
-        @apply bg-gray-50 dark:bg-slate-800;
+        background-color: theme(colors.gray.50);
+        @media (prefers-color-scheme: dark) {
+            background-color: theme(colors.slate.800);
+        }
     }
 
-    img:not(.gallery *):not(figure *):not(.friends *):not(.no-dark-invert){
-        @apply @apply invert-0 md:dark:invert dark:hover:invert-0 transition hover:delay-500 duration-300 ease-in-out
+    img:not(.gallery *):not(figure *):not(.friends *):not(.no-dark-invert) {
+        filter: invert(0);
+        transition-property: all;
+        transition-timing-function: ease-in-out;
+        transition-duration: 300ms;
+        
+        @media (prefers-color-scheme: dark) {
+            @media (min-width: 768px) {
+                filter: invert(1);
+            }
+        }
+        
+        &:hover {
+            filter: invert(0);
+            transition-delay: 500ms;
+        }
     }
 
-    .text-primary{
-        @apply text-gray-900 dark:text-gray-200
-        hover:text-gray-900 dark:hover:dark:text-gray-200
-        visited:text-gray-900 dark:visited:text-gray-200;
+    .text-primary {
+        color: theme(colors.gray.900);
+        
+        &:hover {
+            color: theme(colors.gray.900);
+        }
+        
+        &:visited {
+            color: theme(colors.gray.900);
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            color: theme(colors.gray.200);
+            
+            &:hover {
+                color: theme(colors.gray.200);
+            }
+            
+            &:visited {
+                color: theme(colors.gray.200);
+            }
+        }
     }
-
+    
+    /* Typography plugin code styling */
+    article code {
+        background-color: rgb(243 244 246);
+        color: rgb(190 18 60);
+        font-weight: 400;
+        border-radius: 0.25rem;
+        padding: 0.1rem 0.25rem;
+        
+        &::before,
+        &::after {
+            content: none;
+        }
+    }
+    
+    @media (prefers-color-scheme: dark) {
+        article code:not(pre *) {
+            background-color: rgb(31 41 55);
+            color: rgb(190 18 60);
+        }
+    }
+    
+    article blockquote p:first-of-type::before,
+    article blockquote p:last-of-type::after {
+        content: none;
+    }
 }
