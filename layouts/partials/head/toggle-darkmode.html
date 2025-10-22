@@ -1,18 +1,25 @@
 <script>
-  if (localStorage.getItem("current-theme") === null) {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      localStorage.setItem("current-theme", "dark");
-      document.documentElement.classList.add('dark')
-      change_discussion_color_mode();
+  // Initialize theme immediately to avoid flash
+  (function() {
+    const theme = localStorage.getItem("current-theme");
+    
+    if (theme === null) {
+      // First time visitor - use system preference
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        localStorage.setItem("current-theme", "dark");
+        document.documentElement.classList.add('dark');
+      } else {
+        localStorage.setItem("current-theme", "light");
+        document.documentElement.classList.remove('dark');
+      }
+    } else if (theme === 'dark') {
+      // User has chosen dark mode
+      document.documentElement.classList.add('dark');
     } else {
-      localStorage.setItem("current-theme", "light");
-      change_discussion_color_mode();
+      // User has chosen light mode
+      document.documentElement.classList.remove('dark');
     }
-  } else {
-    if (localStorage.getItem('current-theme') === 'dark') {
-      document.documentElement.classList.add('dark')
-    }
-  }
+  })();
 
   function change_color_mode(){
     if (localStorage.getItem('current-theme') === 'light') {
@@ -31,15 +38,17 @@
     {{ if .Params.enablecomment }}
     const theme = localStorage.getItem('current-theme') === 'light' ? 'light' : 'dark'
     const message = {
-  setConfig: {
-    theme: theme,
-  }
-};
+      setConfig: {
+        theme: theme,
+      }
+    };
     
     const iframe = document.querySelector('iframe.giscus-frame');
-    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    if (iframe) {
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    }
     {{ else }}
-    console.log('utteranc.es is not enabled.')
+    // Comments not enabled
     {{ end }}
   }
   

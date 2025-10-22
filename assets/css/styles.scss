@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @source "../../../../themes/ecwu-theme/layouts";
 @source "../../../../content/post";
 
@@ -26,7 +28,10 @@
         &:visited {
             color: theme(colors.zinc.400);
         }
-        @media (prefers-color-scheme: dark) {
+    }
+
+    :where(.dark, .dark *) {
+        a {
             &:hover {
                 color: white;
             }
@@ -39,7 +44,10 @@
     body {
         padding-left: 12.5%;
         margin-right: 1.25rem;
-        @media (prefers-color-scheme: dark) {
+    }
+
+    :where(.dark, .dark *) {
+        body {
             background-color: theme(colors.zinc.900);
         }
     }
@@ -93,14 +101,21 @@
     }
 
     hr {
-        @media (prefers-color-scheme: dark) {
+        border-color: inherit;
+    }
+
+    :where(.dark, .dark *) {
+        hr {
             border-color: theme(colors.gray.700);
         }
     }
 
     tr:nth-child(odd):not(article *) {
         background-color: theme(colors.gray.50);
-        @media (prefers-color-scheme: dark) {
+    }
+
+    :where(.dark, .dark *) {
+        tr:nth-child(odd):not(article *) {
             background-color: theme(colors.slate.800);
         }
     }
@@ -111,15 +126,17 @@
         transition-timing-function: ease-in-out;
         transition-duration: 300ms;
         
-        @media (prefers-color-scheme: dark) {
-            @media (min-width: 768px) {
-                filter: invert(1);
-            }
-        }
-        
         &:hover {
             filter: invert(0);
             transition-delay: 500ms;
+        }
+    }
+
+    :where(.dark, .dark *) {
+        img:not(.gallery *):not(figure *):not(.friends *):not(.no-dark-invert) {
+            @media (min-width: 768px) {
+                filter: invert(1);
+            }
         }
     }
 
@@ -133,8 +150,10 @@
         &:visited {
             color: theme(colors.gray.900);
         }
-        
-        @media (prefers-color-scheme: dark) {
+    }
+
+    :where(.dark, .dark *) {
+        .text-primary {
             color: theme(colors.gray.200);
             
             &:hover {
@@ -161,7 +180,7 @@
         }
     }
     
-    @media (prefers-color-scheme: dark) {
+    :where(.dark, .dark *) {
         article code:not(pre *) {
             background-color: rgb(31 41 55);
             color: rgb(190 18 60);
