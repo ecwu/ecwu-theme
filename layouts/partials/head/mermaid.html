@@ -1,0 +1,11 @@
+{{/* Mermaid */}}
+{{ if .Page.HasShortcode "mermaid" }}
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@11.12.0/dist/mermaid.min.js"></script>
+  {{ $mermaidConfig := resources.Get "js/mermaid.js" }}
+  {{ $mermaidConfig := $mermaidConfig | resources.Minify | resources.Fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") }}
+  <script
+    defer
+    type="text/javascript"
+    src="{{ $mermaidConfig.RelPermalink }}"
+    integrity="{{ $mermaidConfig.Data.Integrity }}"></script>
+{{ end }}

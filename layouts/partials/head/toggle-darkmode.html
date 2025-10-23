@@ -21,15 +21,46 @@
     }
   })();
 
+  // Update mermaid theme when dark mode is toggled
+  // Note: initMermaidDark() and initMermaidLight() are defined in mermaid.js
+  window.updateMermaidTheme = () => {
+    if (typeof mermaid !== 'undefined') {
+      const isDark = document.documentElement.classList.contains("dark");
+
+      const mermaids = document.querySelectorAll('pre.mermaid');
+      mermaids.forEach(e => {
+        if (e.getAttribute('data-processed')) {
+          // Already rendered, clean the processed attributes
+          e.removeAttribute('data-processed');
+          // Replace the rendered HTML with the stored text
+          e.innerHTML = e.getAttribute('data-graph');
+        } else {
+          // First time, store the text
+          e.setAttribute('data-graph', e.textContent);
+        }
+      });
+
+      if (isDark) {
+        initMermaidDark();
+        mermaid.run();
+      } else {
+        initMermaidLight();
+        mermaid.run();
+      }
+    }
+  }
+
   function change_color_mode(){
     if (localStorage.getItem('current-theme') === 'light') {
       document.documentElement.classList.add('dark')
       localStorage.setItem('current-theme', 'dark');
       change_discussion_color_mode();
+      updateMermaidTheme();
     } else {
       document.documentElement.classList.remove('dark')
       localStorage.setItem('current-theme', 'light');
       change_discussion_color_mode();
+      updateMermaidTheme();
     }
   }
   
@@ -51,6 +82,8 @@
     // Comments not enabled
     {{ end }}
   }
+
+  
   
 
   document.addEventListener("DOMContentLoaded", () => {
