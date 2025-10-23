@@ -191,4 +191,8 @@
     article blockquote p:last-of-type::after {
         content: none;
     }
+
+    article li {
+        line-height: 1.4;
+    }
 }

@@ -2909,6 +2909,9 @@
   article blockquote p:first-of-type::before, article blockquote p:last-of-type::after {
     content: none;
   }
+  article li {
+    line-height: 1.4;
+  }
 }
 @property --tw-rotate-x {
   syntax: "*";
