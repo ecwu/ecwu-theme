@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="w-content my-10">
-  <ul class="sm:space-y-6">
+  <ul class="space-y-8 max-w-[600px]">
     {{ range $key, $value := .Data.Terms.ByCount }}
     {{ $bgimg := newScratch }}
     {{range .Pages}}
@@ -8,37 +8,73 @@
       {{ $bgimg.Set (string (len $bgimg.Values)) .Params.featureimage }}
       {{end}}
     {{end}}
-    <li
-      class="-mx-4 p-4 pb-10 bg-gray-50 flex flex-col-reverse items-start sm:mx-0 sm:p-10 sm:rounded-2xl xl:flex-row dark:bg-gray-800/50">
-        <div class="max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2">
-          <div class="relative p-3 col-start-1 row-start-1 flex flex-col-reverse rounded-lg bg-gradient-to-t from-black/75 via-black/0 sm:bg-none sm:row-start-2 sm:p-0 lg:row-start-1">
-            <h1 class="mb-0 md:mb-6 mt-1 text-lg font-semibold text-white sm:text-gray-900 md:text-2xl dark:sm:text-white">{{ $value.Name | humanize |title }}</h1>
-            <p class="text-sm leading-4 font-medium text-white sm:text-gray-500 dark:sm:text-gray-400">Series</p>
+    <li class="group relative overflow-hidden rounded-2xl bg-gray-900 shadow-lg transition-shadow duration-300 hover:shadow-xl">
+      <!-- Cover Image with Overlay -->
+      <div class="relative h-48 sm:h-56 md:h-64 overflow-hidden">
+        {{ if gt (len $bgimg.Values) 0 }}
+        <img 
+          src="{{ index $bgimg.Values (string 0) }}" 
+          alt="{{ $value.Name | humanize |title }}" 
+          class="w-full h-full object-cover no-dark-invert"
+          loading="lazy">
+        {{ else }}
+        <!-- Pure color background when no image -->
+        <div class="w-full h-full bg-gradient-to-br from-orange-700 to-blue-500"></div>
+        {{ end }}
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+        
+        <!-- Content Overlay -->
+        <div class="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 md:p-8">
+          <!-- Series Badge -->
+          <div class="mb-3">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-500/90 text-white backdrop-blur-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+              Series
+            </span>
           </div>
-          <figure class="grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0">
-            <img src="{{ if gt (len $bgimg.Values) 0 }}{{ index $bgimg.Values (string 0) }}{{else}}{{ site.Params.placeholderUnsplashCollection }}{{end}}" alt="" class="w-96 h-60 object-cover rounded-lg sm:h-52 col-span-full" loading="lazy">
-          </figure>
-          <dl class="mt-4 text-xs font-medium flex items-center row-start-2 sm:mt-1 sm:row-start-3 md:mt-2.5 lg:row-start-2">
-            <dt class="sr-only">Number of Posts</dt>
-            <dd class="text-blue-600 flex items-center dark:text-blue-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 flex items-center dark:text-blue-400 h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          
+          <!-- Title -->
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4 leading-tight">
+            {{ $value.Name | humanize |title }}
+          </h2>
+          
+          <!-- Meta Information -->
+          <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-4 md:mb-5">
+            <!-- Post Count -->
+            <div class="flex items-center text-white/90">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
               </svg>
-              <span>{{ $value.Count }} <span class="text-gray-400 font-normal">post{{ if gt $value.Count 1 }}(s){{end}}</span></span>
-            </dd>
-            <dt class="sr-only">Last Update</dt>
-            <dd class="flex items-center text-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <span class="text-sm font-semibold">{{ $value.Count }}</span>
+              <span class="ml-1 text-sm text-white/70">post{{ if gt $value.Count 1 }}s{{end}}</span>
+            </div>
+            
+            <!-- Last Update -->
+            <div class="flex items-center text-white/90">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               {{ $firstChild := index .Pages 0 }}
-              {{ $firstChild.Params.publishDate.Format "2006-01-02 15:04 MST" }}
-            </dd>
-          </dl>
-          <div class="mt-4 col-start-1 row-start-3 self-center sm:mt-0 sm:col-start-2 sm:row-start-2 sm:row-span-2 lg:mt-6 lg:col-start-1 lg:row-start-3 lg:row-end-4">
-            <a type="button" href="{{ $value.Name| urlize }}" class="border border-blue-500 text-primary leading-6 font-medium py-2 px-3 rounded-lg">Check Series</a>
+              <span class="text-sm text-white/70">{{ $firstChild.Params.publishDate.Format "Jan 02, 2006" }}</span>
+            </div>
+          </div>
+          
+          <!-- CTA Button -->
+          <div class="flex items-center">
+            <a 
+              href="{{ $value.Name| urlize }}" 
+              class="inline-flex items-center px-4 py-2 sm:px-6 sm:py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg sm:rounded-xl transition-all duration-300 transform hover:translate-x-2 shadow-lg hover:shadow-xl text-sm">
+              <span>Explore Series</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
           </div>
         </div>
+      </div>
     </li>
     {{ end }}
   </ul>
