@@ -19,6 +19,7 @@
 }
 
 @layer base {
+    /* Base link styles - lower specificity, will be overridden by prose */
     a {
         font-weight: 700;
         &:hover {
@@ -32,6 +33,29 @@
 
     :where(.dark, .dark *) {
         a {
+            &:hover {
+                color: white;
+            }
+            &:visited {
+                color: theme(colors.slate.600);
+            }
+        }
+    }
+    
+    /* Prose link styles - higher specificity to override typography plugin */
+    article.prose a {
+        font-weight: 700;
+        &:hover {
+            background-color: theme(colors.blue.900);
+            color: white;
+        }
+        &:visited {
+            color: theme(colors.zinc.400);
+        }
+    }
+
+    :where(.dark, .dark *) {
+        article.prose a {
             &:hover {
                 color: white;
             }
@@ -120,26 +144,6 @@
         }
     }
 
-    img:not(.gallery *):not(figure *):not(.friends *):not(.no-dark-invert) {
-        filter: invert(0);
-        transition-property: all;
-        transition-timing-function: ease-in-out;
-        transition-duration: 300ms;
-        
-        &:hover {
-            filter: invert(0);
-            transition-delay: 500ms;
-        }
-    }
-
-    :where(.dark, .dark *) {
-        img:not(.gallery *):not(figure *):not(.friends *):not(.no-dark-invert) {
-            @media (min-width: 768px) {
-                filter: invert(1);
-            }
-        }
-    }
-
     .text-primary {
         color: theme(colors.gray.900);
         
@@ -166,33 +170,37 @@
         }
     }
     
-    /* Typography plugin code styling */
-    article code {
-        background-color: rgb(243 244 246);
-        color: rgb(190 18 60);
-        font-weight: 400;
-        border-radius: 0.25rem;
-        padding: 0.1rem 0.25rem;
+    /* Typography plugin code styling - needs higher specificity to override prose */
+    article.prose code:not(pre *),
+    article.prose code:not(pre code) {
+        background-color: rgb(243 244 246) !important;
+        color: rgb(190 18 60) !important;
+        font-weight: 400 !important;
+        border-radius: 0.25rem !important;
+        padding: 0.1rem 0.25rem !important;
         
         &::before,
         &::after {
-            content: none;
+            content: none !important;
         }
     }
     
     :where(.dark, .dark *) {
-        article code:not(pre *) {
-            background-color: rgb(31 41 55);
-            color: rgb(190 18 60);
+        article.prose code:not(pre *),
+        article.prose code:not(pre code) {
+            background-color: rgb(31 41 55) !important;
+            color: rgb(190 18 60) !important;
         }
     }
     
-    article blockquote p:first-of-type::before,
-    article blockquote p:last-of-type::after {
-        content: none;
+    /* Typography plugin blockquote styling */
+    article.prose blockquote p:first-of-type::before,
+    article.prose blockquote p:last-of-type::after {
+        content: none !important;
     }
 
-    article li {
-        line-height: 1.4;
+    /* Typography plugin list styling */
+    article.prose li {
+        line-height: 1.4 !important;
     }
 }
