@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{- partial "article/feature-image.html" . -}}
+{{- partial "article/article-meta.html" . -}}
+{{- partial "article/series.html" . -}}
+<main>
+<article class="prose dark:prose-invert lg:prose-xl md:prose-lg prose-ul:leading-5 prose-ol:leading-5">
+    {{ partial "article/toc.html" . }}
+    {{ $friends := .Site.Data.friends }}
+    {{ if $friends }}
+      {{ range $friends }}
+        {{ partial "friend-item-data.html" . }}
+      {{ end }}
+    {{ else }}
+      <p>No friends data found. Check data/friends.yaml file.</p>
+    {{ end }}
+    {{ .Content }}
+
+    
+</article>
+</main>
+{{- partial "article/article-info-card.html" . -}}
+{{- partial "misc/comment.html" . -}}
+{{- partial "article/related-post.html" . -}}
+{{ end }}
