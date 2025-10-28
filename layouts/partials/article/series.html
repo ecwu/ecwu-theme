@@ -6,39 +6,26 @@
         {{ $.Scratch.Add "total_page_num" 1 }} 
         {{ if gt $.Date.Unix .Date.Unix }} 
             {{ $.Scratch.Add "cur_page_num" 1 }} 
-            {{ $.Scratch.Set "prev_link" .Permalink }}
-            {{ $.Scratch.Set "prev_title" .Title }}  
         {{ end }}
     {{ end }}
-    {{ range where .Site.RegularPages.ByDate.Reverse "Params.series" .Params.series }} 
-        {{ $.Scratch.Set "first_link" .Permalink }}
-        {{ if lt $.Date.Unix .Date.Unix }}
-            {{ $.Scratch.Set "next_link" .Permalink }}
-            {{ $.Scratch.Set "next_title" .Title }}
-        {{ end }}
-    {{ end }}
-    {{ if or ($.Scratch.Get "next_link") ($.Scratch.Get "prev_link") }} 
-        <p>This post is part {{ $.Scratch.Get "cur_page_num" }} of {{ $.Scratch.Get "total_page_num" }}
-            in the <b>{{ .Params.series }}</b> series.</p>
-        <p>
-        {{ if $.Scratch.Get "prev_link" }}
-            {{ if ne ($.Scratch.Get "prev_link") ($.Scratch.Get "first_link") }}
-                <a href="{{ $.Scratch.Get "first_link" }}">Goto: First Post</a>
-                    |
+    
+    <p>This post is part {{ $.Scratch.Get "cur_page_num" }} of {{ $.Scratch.Get "total_page_num" }} in the <b>{{ .Params.series }}</b> series.</p>
+    
+    <details class="mt-3">
+        <summary class="cursor-pointer hover:text-gray-900 dark:hover:text-gray-200 font-medium">
+            View all articles in this series
+        </summary>
+        <ol class="mt-2 ml-8 space-y-1">
+            {{ range $index, $page := (where .Site.RegularPages.ByDate "Params.series" .Params.series) }}
+                <li class="list-decimal ml-4">
+                    {{ if eq $page.Permalink $.Permalink }}
+                        <span class="font-bold text-gray-900 dark:text-gray-100">{{ $page.Title }}</span> <span class="text-sm">(current)</span>
+                    {{ else }}
+                        <a href="{{ $page.Permalink }}" class="hover:underline">{{ $page.Title }}</a>
+                    {{ end }}
+                </li>
             {{ end }}
-            {{ if $.Scratch.Get "prev_link" }}
-                <a href="{{ $.Scratch.Get "prev_link" }}">Prev: {{ $.Scratch.Get "prev_title" }}</a>
-            {{ end }}
-        {{ end }}
-        {{ if and ($.Scratch.Get "next_link") ($.Scratch.Get "prev_link") }}
-                |
-        {{ end }}
-        {{ if $.Scratch.Get "next_link" }}
-            <a href="{{ $.Scratch.Get "next_link" }}">Next:{{ $.Scratch.Get "next_title" }}</i></a></p>
-        {{ end }}
-    {{ else }}
-    <p>This post is part of the <b>{{ .Params.series }}</b> series.</p>
-    <p>
-    {{ end }}
-  </div>
+        </ol>
+    </details>
+</div>
 {{ end }}
