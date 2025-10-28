@@ -1,1 +1,3 @@
-<span class="px-2 py-1 text-gray-700 bg-gray-300 bg-stripes bg-stripes-white dark:text-gray-400 dark:bg-slate-700 dark:bg-stripes-slate-900 rounded-md">{{ .Inner }}</span>
+<label for="sidenote-{{ .Ordinal }}" class="sidenote-number"></label>
+<input type="checkbox" id="sidenote-{{ .Ordinal }}" class="sidenote-checkbox"/>
+<span class="sidenote">{{ .Inner }}</span>
