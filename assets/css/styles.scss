@@ -199,9 +199,40 @@
         content: none !important;
     }
 
+    /* Prevent long URLs and text from overflowing in blockquotes and other elements */
+    article.prose blockquote {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+    }
+
+    /* Apply word breaking to all prose content to prevent overflow */
+    article.prose {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    /* Specifically handle long URLs and links */
+    article.prose a {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
     /* Typography plugin list styling */
     article.prose li {
         line-height: 1.4 !important;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    /* Handle long URLs in lists */
+    article.prose ol,
+    article.prose ul {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
     }
 
     /* Make tables scrollable on small screens */

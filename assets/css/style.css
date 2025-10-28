@@ -2915,8 +2915,30 @@
   article.prose blockquote p:first-of-type::before, article.prose blockquote p:last-of-type::after {
     content: none !important;
   }
+  article.prose blockquote {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  article.prose {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  article.prose a {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
   article.prose li {
     line-height: 1.4 !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+  article.prose ol, article.prose ul {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
   article.prose table {
     display: block;
