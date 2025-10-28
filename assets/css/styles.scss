@@ -203,4 +203,33 @@
     article.prose li {
         line-height: 1.4 !important;
     }
+
+    /* Make tables scrollable on small screens */
+    article.prose table {
+        display: block;
+        overflow-x: auto;
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Make KaTeX math equations scrollable on small screens */
+    .katex-display {
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .katex {
+        max-width: 100%;
+    }
+
+    /* Ensure inline math doesn't break layout */
+    .katex-inline {
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: inline-block;
+        max-width: 100%;
+        vertical-align: middle;
+    }
 }
