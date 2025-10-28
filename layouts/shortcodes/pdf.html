@@ -1,4 +1,13 @@
-<div class="aspect-w-16 aspect-h-10">
+{{ $aspect := .Get "aspect" | default "landscape" }}
+{{ $aspectClass := "aspect-[297/210]" }}
+{{ if eq $aspect "portrait" }}
+  {{ $aspectClass = "aspect-[210/297]" }}
+{{ else if eq $aspect "video" }}
+  {{ $aspectClass = "aspect-video" }}
+{{ else if eq $aspect "landscape" }}
+  {{ $aspectClass = "aspect-[297/210]" }}
+{{ end }}
+<div class="w-full {{ $aspectClass }}">
   <object data="{{ with .Get "pdf-url" }}{{ . }}{{ end }}" type="application/pdf" class="rounded-lg w-full h-full"> 
     <p>It appears you don't have a PDF plugin for this browser.
      No biggie... you can <a href="{{ with .Get "pdf-url" }}{{ . }}{{ end }}">click here to

@@ -1032,6 +1032,18 @@
   .table {
     display: table;
   }
+  .aspect-\[4\/3\] {
+    aspect-ratio: 4/3;
+  }
+  .aspect-\[9\/16\] {
+    aspect-ratio: 9/16;
+  }
+  .aspect-\[210\/297\] {
+    aspect-ratio: 210/297;
+  }
+  .aspect-\[297\/210\] {
+    aspect-ratio: 297/210;
+  }
   .aspect-video {
     aspect-ratio: var(--aspect-video);
   }

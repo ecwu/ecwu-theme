@@ -1,4 +1,11 @@
-<video controls {{ if .Get "is-loop" }}loop autoplay{{ end }} class="rounded-lg">
-  <source src="{{ with .Get "video-url" }}{{ . }}{{ end }}" type="video/mp4"/>
-  Your browser does not support the video tag 你的浏览器不支持视频.
-</video>
+{{ $aspect := .Get "aspect" | default "landscape" }}
+{{ $aspectClass := "aspect-video" }}
+{{ if eq $aspect "portrait" }}
+  {{ $aspectClass = "aspect-[9/16]" }}
+{{ end }}
+<div class="w-full {{ $aspectClass }}">
+  <video controls {{ if .Get "is-loop" }}loop{{ end }} class="rounded-lg w-full h-full object-cover">
+    <source src="{{ with .Get "video-url" }}{{ . }}{{ end }}" type="video/mp4"/>
+    Your browser does not support the video tag 你的浏览器不支持视频.
+  </video>
+</div>
