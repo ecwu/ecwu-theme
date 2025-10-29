@@ -27,3 +27,9 @@
     </p>
   </footer>
 </div>
+
+{{ if not .Site.BuildDrafts }}
+    {{ if .Site.Config.Services.GoogleAnalytics.ID}}
+        {{ template "_internal/google_analytics.html" . }}
+    {{ end }}
+{{ end }}
