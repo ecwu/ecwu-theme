@@ -7,16 +7,16 @@
 
 <div
   {{ if not ($.Scratch.Get "cardColor") }}
-    class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900"
+    class="flex px-4 py-3 rounded-md bg-gray-100 dark:bg-slate-800"
   {{ else }}
     class="flex px-4 py-3 rounded-md" style="background-color: {{ $.Scratch.Get "cardColor" }}"
   {{ end }}
   >
   <span
     {{ if not ($.Scratch.Get "iconColor") }}
-      class="text-primary-400 pe-3 flex items-center"
+      class="text-primary-400 pe-3 flex items-start mt-0.5"
     {{ else }}
-      class="pe-3 flex items-center" style="color: {{ $.Scratch.Get "iconColor" }}"
+      class="pe-3 flex items-start mt-0.5" style="color: {{ $.Scratch.Get "iconColor" }}"
     {{ end }}
     >
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line-icon lucide-pen-line"><path d="M13 21h8"/><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg>
