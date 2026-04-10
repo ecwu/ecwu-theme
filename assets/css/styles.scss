@@ -76,6 +76,7 @@
         counter-reset: sidenote-counter;
         box-sizing: border-box;
         max-width: 100vw;
+        background-color: theme(colors.white);
     }
 
     .skip-link {
@@ -113,10 +114,8 @@
         outline: none;
     }
 
-    :where(.dark, .dark *) {
-        body {
-            background-color: theme(colors.zinc.900);
-        }
+    html.dark body {
+        background-color: theme(colors.zinc.900);
     }
 
     .nav-title {
