@@ -4,9 +4,28 @@
   {{ $aspectClass = "aspect-[9/16]" }}
 {{ end }}
 {{ $label := .Get "title" | default "Embedded video" }}
+{{ $videoURL := .Get "video-url" }}
+{{ $cleanURL := replaceRE `[?#].*$` "" $videoURL }}
+{{ $extension := lower (path.Ext $cleanURL) }}
+{{ $videoType := .Get "type" | default "" }}
+{{ if eq $videoType "" }}
+  {{ if eq $extension ".mp4" }}
+    {{ $videoType = "video/mp4" }}
+  {{ else if eq $extension ".m4v" }}
+    {{ $videoType = "video/mp4" }}
+  {{ else if eq $extension ".webm" }}
+    {{ $videoType = "video/webm" }}
+  {{ else if eq $extension ".ogv" }}
+    {{ $videoType = "video/ogg" }}
+  {{ else if eq $extension ".ogg" }}
+    {{ $videoType = "video/ogg" }}
+  {{ else if eq $extension ".mov" }}
+    {{ $videoType = "video/quicktime" }}
+  {{ end }}
+{{ end }}
 <div class="w-full {{ $aspectClass }}">
   <video controls preload="metadata" title="{{ $label }}" aria-label="{{ $label }}" {{ if .Get "is-loop" }}loop{{ end }} class="rounded-lg w-full h-full object-cover">
-    <source src="{{ with .Get "video-url" }}{{ . }}{{ end }}" type="video/mp4"/>
+    <source src="{{ $videoURL }}"{{ with $videoType }} type="{{ . }}"{{ end }}/>
     Your browser does not support the video tag 你的浏览器不支持视频.
   </video>
 </div>
