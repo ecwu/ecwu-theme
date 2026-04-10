@@ -1,5 +1,5 @@
 <div class="mb-12 mt-16 w-content">
-  <h1 class="text-gray-900 dark:text-gray-200">{{ .Title }}{{ if .Draft }} :: <abbr title="This post will not build in the production environment">Draft</abbr> {{end}}</h1>
+  <h1 id="article-title" class="text-gray-900 dark:text-gray-200">{{ .Title }}{{ if .Draft }} :: <abbr title="This post will not build in the production environment">Draft</abbr> {{end}}</h1>
   {{ if .Params.subtitle }}<h2 class="text-gray-700 dark:text-gray-400">{{ .Params.subtitle }}</h2>{{ end }}
 
   {{ if or (eq .Type "post") (.Params.showmeta) }}
@@ -7,7 +7,7 @@
     <div class="space-y-1">
       {{ if .Params.author }}
       <p>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-signature-icon lucide-signature h-5 w-5 inline-block">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-signature-icon lucide-signature h-5 w-5 inline-block" aria-hidden="true" focusable="false">
           <path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/>
           <path d="M3 21h18"/>
         </svg> {{ .Params.author }}</p>
@@ -18,18 +18,18 @@
       <p>
         {{ if not .Params.hidedate }}
         <span class="{{ if not .Params.hidereadtime }}mr-2{{ end }}">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-clock-icon lucide-calendar-clock h-5 w-5 inline-block"><path d="M16 14v2.2l1.6 1"/><path d="M16 2v4"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-clock-icon lucide-calendar-clock h-5 w-5 inline-block" aria-hidden="true" focusable="false"><path d="M16 14v2.2l1.6 1"/><path d="M16 2v4"/>
           <path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/>
           <path d="M3 10h5"/>
           <path d="M8 2v4"/>
           <circle cx="16" cy="16" r="6"/>
-        </svg> {{ .Date | time.Format ":date_full" }}
+        </svg> <time datetime="{{ .Date | time.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format ":date_full" }}</time>
         </span>
         {{end }}
 
         {{ if not .Params.hidereadtime }}
         <span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-clock-icon lucide-clipboard-clock h-5 w-5 inline-block">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-clock-icon lucide-clipboard-clock h-5 w-5 inline-block" aria-hidden="true" focusable="false">
           <path d="M16 14v2.2l1.6 1"/>
           <path d="M16 4h2a2 2 0 0 1 2 2v.832"/>
           <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h2"/>
@@ -45,7 +45,7 @@
       <p>
         {{ if .Params.status }}
         <span class="{{ if or .Params.confidence .Params.importance }}mr-2{{ end }}">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flag-icon lucide-flag h-5 w-5 inline-block">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flag-icon lucide-flag h-5 w-5 inline-block" aria-hidden="true" focusable="false">
           <path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"/>
         </svg>
         Status: {{ .Params.status }}
@@ -53,7 +53,7 @@
         {{ end }}
         {{ if .Params.confidence }}
         <span class="{{ if .Params.importance }}mr-2{{ end }}">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check-icon lucide-badge-check h-5 w-5 inline-block">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check-icon lucide-badge-check h-5 w-5 inline-block" aria-hidden="true" focusable="false">
           <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/>
           <path d="m9 12 2 2 4-4"/>
         </svg>
@@ -62,7 +62,7 @@
         {{ end }}
         {{ if .Params.importance }}
         <span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waypoints-icon lucide-waypoints h-5 w-5 inline-block">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waypoints-icon lucide-waypoints h-5 w-5 inline-block" aria-hidden="true" focusable="false">
           <circle cx="12" cy="4.5" r="2.5"/>
           <path d="m10.2 6.3-3.9 3.9"/>
           <circle cx="4.5" cy="12" r="2.5"/>
@@ -77,7 +77,7 @@
       </p>
       {{ if .Params.showinfocard }}
       <p>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scroll-text-icon lucide-scroll-text h-5 w-5 inline-block">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scroll-text-icon lucide-scroll-text h-5 w-5 inline-block" aria-hidden="true" focusable="false">
           <path d="M15 12h-5"/>
           <path d="M15 8h-5"/>
           <path d="M19 17V5a2 2 0 0 0-2-2H4"/>

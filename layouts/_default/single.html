@@ -2,8 +2,8 @@
 {{- partial "article/feature-image.html" . -}}
 {{- partial "article/article-meta.html" . -}}
 {{- partial "article/series.html" . -}}
-<main>
-<article class="prose dark:prose-invert lg:prose-xl md:prose-lg prose-ul:leading-5 prose-ol:leading-5">
+<main id="main-content" tabindex="-1">
+<article class="prose dark:prose-invert lg:prose-xl md:prose-lg prose-ul:leading-5 prose-ol:leading-5" aria-labelledby="article-title">
     {{ partial "article/toc.html" . }}
     {{ .Content }}
 </article>

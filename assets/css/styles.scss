@@ -67,6 +67,7 @@
 
     html {
         overflow-x: hidden;
+        scroll-padding-top: 1rem;
     }
 
     body {
@@ -75,6 +76,41 @@
         counter-reset: sidenote-counter;
         box-sizing: border-box;
         max-width: 100vw;
+    }
+
+    .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: 0.75rem;
+        z-index: 50;
+        transform: translateY(-200%);
+        border-radius: 0.5rem;
+        background-color: theme(colors.zinc.900);
+        color: theme(colors.white);
+        padding: 0.5rem 0.75rem;
+        text-decoration: none;
+    }
+
+    .skip-link:focus {
+        transform: translateY(0);
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    iframe:focus-visible,
+    video:focus-visible,
+    object:focus-visible,
+    [tabindex]:focus-visible {
+        outline: 2px solid theme(colors.blue.700);
+        outline-offset: 3px;
+    }
+
+    #main-content:focus {
+        outline: none;
     }
 
     :where(.dark, .dark *) {

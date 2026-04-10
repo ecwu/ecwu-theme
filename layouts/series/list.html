@@ -1,15 +1,15 @@
 {{ define "main" }}
-<div class="w-content mb-10">
+<main id="main-content" tabindex="-1" class="w-content mb-10">
     <section>
         <div class="mb-8 flex items-center gap-4">
             <a href="/series/" class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors duration-200" aria-label="Back to series">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700 dark:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700 dark:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
             </a>
-            <h2 class="text-3xl leading-tight tracking-tight text-gray-900 font-bold dark:text-gray-200">
+            <h1 class="text-3xl leading-tight tracking-tight text-gray-900 font-bold dark:text-gray-200">
                 Series: {{ .Name }}
-            </h2>
+            </h1>
         </div>
         <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {{ range .Data.Pages }}
@@ -19,7 +19,7 @@
                     {{ if .Params.featureimage }}
                     <img 
                         src="{{ .Params.featureimage }}" 
-                        alt="{{ .Title }}"
+                        alt="{{ .Params.featureimagealt | default (printf "Feature image for %s" .Title) }}"
                         class="w-full h-full object-cover no-dark-invert"
                         loading="lazy">
                     {{ else }}
@@ -52,5 +52,5 @@
             {{ end }}
         </ul>
     </section>
-</div>
+</main>
 {{ end }}

@@ -64,8 +64,8 @@
     "1028,1251,203" "1030,1253,201" "1031,1255,200" "1033,1257,198" "1034,1260,196" "1036,1262,194" "1037,1264,192" "1039,1266,191"
 -}}
 {{ $totalTerms := len .Data.Terms.ByCount }}
-<div class="w-content py-10">
-<h2 class="text-gray-900 dark:text-gray-200">{{.Type | humanize}} by Frequency</h2>
+<main id="main-content" tabindex="-1" class="w-content py-10">
+<h1 class="text-gray-900 dark:text-gray-200">{{.Type | humanize}} by Frequency</h1>
 <section>
     {{ range $index, $value := .Data.Terms.ByCount }}
     {{- $colorIndex := sub 255 (div (mul $index 255) (sub $totalTerms 1)) -}}
@@ -80,5 +80,5 @@
        href="{{ $value.Name| urlize }}">{{ $value.Name }} ({{ $value.Count }})</a>
     {{ end }}
 </section>
-</div>
+</main>
 {{ end }}

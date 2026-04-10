@@ -1,30 +1,36 @@
 {{ $currentPage := . }}
-<nav aria-label="navbar" class="mb-3 mr-8">
-    <ol role="list" class="flex flex-wrap">
+<nav aria-label="Primary navigation" class="mb-3 mr-8">
+    <ul class="flex flex-wrap">
         {{ $list := (.Site.Menus.nav) }}
         {{ $len := (len $list) }}
         {{ range $i, $e := $list }}
+        {{ $isExternal := or (hasPrefix .URL "http://") (hasPrefix .URL "https://") }}
+        {{ $isCurrent := false }}
+        {{ if not $isExternal }}
+          {{ $isCurrent = or ($currentPage.IsMenuCurrent "nav" .) ($currentPage.HasMenuCurrent "nav" .) (eq $currentPage.RelPermalink .URL) (and (ne .URL "/") (hasPrefix $currentPage.RelPermalink .URL)) }}
+        {{ end }}
         <li>
         <div class="flex items-center justify-center">
-            <a href="{{ .URL }}" class='mr-2 font-medium text-gray-900 dark:text-gray-200 visited:text-gray-900 dark:visited:text-gray-200 flex items-center gap-1'>
+            <a href="{{ .URL }}" class='mr-2 font-medium text-gray-900 dark:text-gray-200 visited:text-gray-900 dark:visited:text-gray-200 flex items-center gap-1' {{ if $isCurrent }}aria-current="page"{{ end }}>
                 {{ .Name }}
-                {{ if or (hasPrefix .URL "http://") (hasPrefix .URL "https://") }}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link inline-block">
+                {{ if $isExternal }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link inline-block" aria-hidden="true" focusable="false">
                     <path d="M15 3h6v6"/>
                     <path d="M10 14 21 3"/>
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                 </svg>
+                <span class="sr-only">External link</span>
                 {{ end }}
             </a>
             {{ if eq (add $i 1) $len }}
             {{ else }}
             <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" class="mr-2 w-4 h-5 fill-gray-300">
+                aria-hidden="true" focusable="false" class="mr-2 w-4 h-5 fill-gray-300">
                 <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
             </svg>
             {{ end }}
         </div>
         </li>
         {{ end }}
-    </ol>
+    </ul>
 </nav>

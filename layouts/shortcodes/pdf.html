@@ -7,8 +7,9 @@
 {{ else if eq $aspect "landscape" }}
   {{ $aspectClass = "aspect-[297/210]" }}
 {{ end }}
+{{ $label := .Get "title" | default "Embedded PDF document" }}
 <div class="w-full {{ $aspectClass }}">
-  <object data="{{ with .Get "pdf-url" }}{{ . }}{{ end }}" type="application/pdf" class="rounded-lg w-full h-full"> 
+  <object data="{{ with .Get "pdf-url" }}{{ . }}{{ end }}" type="application/pdf" class="rounded-lg w-full h-full" aria-label="{{ $label }}"> 
     <p>It appears you don't have a PDF plugin for this browser.
      No biggie... you can <a href="{{ with .Get "pdf-url" }}{{ . }}{{ end }}">click here to
     download the PDF file.</a></p>  

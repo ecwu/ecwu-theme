@@ -1,29 +1,28 @@
 {{ define "main" }}
-<div class="w-content">
+<main id="main-content" tabindex="-1" class="w-content">
     <div class="py-10">
-        <h2 class="text-gray-900 dark:text-gray-200">All {{ .Name }}:</h2>
-        <section class="list-page text-gray-900 dark:text-gray-200">
+        <h1 class="text-gray-900 dark:text-gray-200">All {{ .Name }}</h1>
+        <section class="list-page text-gray-900 dark:text-gray-200" aria-labelledby="list-page-title">
+            <h2 id="list-page-title" class="sr-only">Entries grouped by year and month</h2>
             {{ range .Data.Pages.GroupByDate "2006" }}
             <details open>
                 <summary class="year">{{ .Key }} ({{ len .Pages }})</summary>
                 {{ range .Pages.GroupByDate "January" }}
-                <ul class="list-disc list-inside indent-6">
-                    <details open>
-                        <summary>{{ .Key }} ({{ len .Pages }})</summary>
+                <details open class="ml-6">
+                    <summary>{{ .Key }} ({{ len .Pages }})</summary>
+                    <ul class="list-disc list-inside indent-6">
                         {{ range .Pages }}
-                        <ul class="list-disc list-inside indent-12">
-                            <li>
-                                <span class="list-date">{{ .Date.Format "Jan 2" }} &middot;</span>
-                                <a href="{{ .RelPermalink }}">{{.Title}}{{if .Draft}} :: <abbr title="This post will not build in the production environment">Draft</abbr>{{end}}</a>
-                            </li>
-                        </ul>
+                        <li>
+                            <span class="list-date">{{ .Date.Format "Jan 2" }} &middot;</span>
+                            <a href="{{ .RelPermalink }}">{{.Title}}{{if .Draft}} :: <abbr title="This post will not build in the production environment">Draft</abbr>{{end}}</a>
+                        </li>
                         {{ end }}
-                    </details>
-                </ul>
+                    </ul>
+                </details>
                 {{ end }}
             </details>
             {{ end }}
         </section>
     </div>
-</div>
+</main>
 {{ end }}

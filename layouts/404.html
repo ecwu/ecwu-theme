@@ -1,8 +1,8 @@
 {{ define "main" }}
 {{ $logo := resources.Get "img/404.svg" }}
-<div class="my-10 w-content flex flex-col items-center">
-  <img src="{{ $logo.RelPermalink }}" class="h-96">
+<main id="main-content" tabindex="-1" class="my-10 w-content flex flex-col items-center">
+  <img src="{{ $logo.RelPermalink }}" class="h-96" alt="Illustration for a page not found">
   <h1 class="text-gray-900 dark:text-gray-200">404, Page Not Found</h1>
   <a class="text-gray-900 dark:text-gray-200" href="/">Back to home</a>
-</div>
+</main>
 {{ end }}

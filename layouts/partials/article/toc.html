@@ -1,10 +1,10 @@
 {{ if .Params.toc  }}
-<section class="mb-8">
-  <details closed class="toc">
+<nav class="mb-8" aria-label="Table of contents">
+  <details class="toc">
     <summary>Table of Contents</summary>
     <div class="text-sm">
       {{ .TableOfContents }}
     </div>
   </details>
-</section>
+</nav>
 {{ end  }}

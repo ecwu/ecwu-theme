@@ -1,6 +1,7 @@
-{{ if not .Site.BuildDrafts }}
+{{ if hugo.IsProduction }}
 {{ if .Params.enablecomment }}
-<div class="pb-10 w-content ">
+<section class="pb-10 w-content" aria-labelledby="comments-title">
+  <h2 id="comments-title" class="sr-only">Comments</h2>
   <script src="https://giscus.app/client.js"
           data-repo="ecwu/ecwu.github.io"
           data-repo-id="MDEwOlJlcG9zaXRvcnkxNjQzMzE1NjY="
@@ -9,19 +10,20 @@
           data-mapping="pathname"
           data-reactions-enabled="1"
           data-emit-metadata="0"
-          data-input-position="botton"
+          data-input-position="bottom"
           data-theme="preferred_color_scheme"
           data-lang="en"
+          data-loading="lazy"
           crossorigin="anonymous"
           async>
   </script>
-</div>
+</section>
 {{ end }}
 {{ else }}
 {{ if .Params.enablecomment }}
-<div class="bg-gray-300 bg-stripes bg-stripes-white dark:text-gray-400 dark:bg-slate-700 dark:bg-stripes-slate-900 rounded-md w-[55%] my-5 py-3 text-center">
+<div class="bg-gray-300 bg-stripes bg-stripes-white dark:text-gray-400 dark:bg-slate-700 dark:bg-stripes-slate-900 rounded-md w-[55%] my-5 py-3 text-center" role="status">
 <span class="text-primary">
-Comment Section disabled in draft mode
+Comment section disabled outside production
 </span>
 </div>
 {{ end }}

@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.18 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -261,6 +261,12 @@
   }
   .inset-0 {
     inset: calc(var(--spacing) * 0);
+  }
+  .start {
+    inset-inline-start: var(--spacing);
+  }
+  .end {
+    inset-inline-end: var(--spacing);
   }
   .top-0 {
     top: calc(var(--spacing) * 0);
@@ -1002,6 +1008,9 @@
   .ml-4 {
     margin-left: calc(var(--spacing) * 4);
   }
+  .ml-6 {
+    margin-left: calc(var(--spacing) * 6);
+  }
   .ml-8 {
     margin-left: calc(var(--spacing) * 8);
   }
@@ -1016,6 +1025,9 @@
   }
   .block {
     display: block;
+  }
+  .contents {
+    display: contents;
   }
   .flex {
     display: flex;
@@ -1090,10 +1102,10 @@
     width: calc(var(--spacing) * 0);
   }
   .w-1\/3 {
-    width: calc(1/3 * 100%);
+    width: calc(1 / 3 * 100%);
   }
   .w-3\/4 {
-    width: calc(3/4 * 100%);
+    width: calc(3 / 4 * 100%);
   }
   .w-4 {
     width: calc(var(--spacing) * 4);
@@ -1533,9 +1545,6 @@
   }
   .indent-6 {
     text-indent: calc(var(--spacing) * 6);
-  }
-  .indent-12 {
-    text-indent: calc(var(--spacing) * 12);
   }
   .font-mono {
     font-family: var(--font-mono);
@@ -2826,6 +2835,7 @@
   }
   html {
     overflow-x: hidden;
+    scroll-padding-top: 1rem;
   }
   body {
     padding-left: 12.5vw;
@@ -2833,6 +2843,28 @@
     counter-reset: sidenote-counter;
     box-sizing: border-box;
     max-width: 100vw;
+  }
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+    z-index: 50;
+    transform: translateY(-200%);
+    border-radius: 0.5rem;
+    background-color: oklch(0.21 0.006 285.885);
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+  }
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, iframe:focus-visible, video:focus-visible, object:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid oklch(0.488 0.243 264.376);
+    outline-offset: 3px;
+  }
+  #main-content:focus {
+    outline: none;
   }
   :where(.dark, .dark *) {
     body {

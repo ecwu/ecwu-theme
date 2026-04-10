@@ -1,6 +1,121 @@
+{{- $siteTitle := .Site.Title -}}
+{{- $siteSubtitle := .Site.Params.subtitle | default $siteTitle -}}
+{{- $languageCode := .Site.Language.LanguageCode | default .Site.LanguageCode | default "en" -}}
+{{- $pageTitle := $siteSubtitle -}}
+{{- if .IsHome -}}
+  {{- $pageTitle = printf "%s | %s" $siteSubtitle $siteTitle -}}
+{{- else if .Title -}}
+  {{- $pageTitle = printf "%s | %s" .Title $siteSubtitle -}}
+{{- end -}}
+{{- $description := .Description | default .Params.description | default .Summary | default .Site.Params.description -}}
+{{- $description = $description | plainify | htmlUnescape | chomp | truncate 160 -}}
+{{- $keywords := slice -}}
+{{- if .Params.keywords -}}
+  {{- $keywords = .Params.keywords -}}
+{{- else if .Params.tags -}}
+  {{- $keywords = .Params.tags -}}
+{{- end -}}
+{{- $authorName := .Params.author | default $siteTitle -}}
+{{- $canonical := .Permalink -}}
+{{- $isNoIndex := or .Params.noindex .Draft (eq .Kind "404") -}}
+{{- $ogType := "website" -}}
+{{- if .IsPage -}}
+  {{- $ogType = "article" -}}
+{{- end -}}
+{{- $image := "" -}}
+{{- with .Params.featureimage -}}
+  {{- if or (hasPrefix . "http://") (hasPrefix . "https://") -}}
+    {{- $image = . -}}
+  {{- else -}}
+    {{- $image = absURL . -}}
+  {{- end -}}
+{{- end -}}
+{{- $twitterCard := "summary" -}}
+{{- if $image -}}
+  {{- $twitterCard = "summary_large_image" -}}
+{{- end -}}
+{{- $publisher := dict "@type" "Person" "name" $siteTitle "url" .Site.BaseURL -}}
+{{- $siteSchema := dict
+  "@context" "https://schema.org"
+  "@type" "WebSite"
+  "name" $siteTitle
+  "url" .Site.BaseURL
+  "description" (.Site.Params.description | plainify | htmlUnescape | chomp)
+  "inLanguage" $languageCode
+-}}
+{{- $pageSchemaType := "WebPage" -}}
+{{- if and .IsPage (or (eq .Section "post") (eq .Section "photography")) -}}
+  {{- $pageSchemaType = "BlogPosting" -}}
+{{- end -}}
+{{- $pageSchema := dict
+  "@context" "https://schema.org"
+  "@type" $pageSchemaType
+  "headline" .Title
+  "name" .Title
+  "description" $description
+  "url" $canonical
+  "inLanguage" $languageCode
+  "author" (dict "@type" "Person" "name" $authorName)
+  "publisher" $publisher
+  "mainEntityOfPage" (dict "@type" "WebPage" "@id" $canonical)
+  "datePublished" (.PublishDate | default .Date | time.Format "2006-01-02T15:04:05Z07:00")
+  "dateModified" (.Lastmod | time.Format "2006-01-02T15:04:05Z07:00")
+-}}
+{{- if .Section -}}
+  {{- $pageSchema = merge $pageSchema (dict "articleSection" (.Section | humanize)) -}}
+{{- end -}}
+{{- if gt (len $keywords) 0 -}}
+  {{- $pageSchema = merge $pageSchema (dict "keywords" $keywords) -}}
+{{- end -}}
+{{- if $image -}}
+  {{- $siteSchema = merge $siteSchema (dict "image" $image) -}}
+  {{- $pageSchema = merge $pageSchema (dict "image" $image) -}}
+{{- end -}}
+
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<title>{{ if .IsHome }}Home - {{ else }}{{ if .Page.Title }}{{ .Page.Title }} - {{ end }}{{ end }} {{ .Site.Params.subtitle }}</title>
+<title>{{ $pageTitle }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="{{ .Site.Params.Description }}">
-<meta name="keywords" content="{{- if .Params.keywords }}{{ range $i, $e := .Params.keywords }}{{ if $i }},{{ end }}{{ $e }}{{ end }}{{- else }}{{ range $i, $e := .Params.tags }}{{ if $i }},{{ end }}{{ $e }}{{ end }}{{- end }}">
-<meta name="author" content="{{ .Site.Title }}">
+<meta name="description" content="{{ $description }}">
+{{ with $keywords }}
+<meta name="keywords" content="{{ delimit . ", " }}">
+{{ end }}
+<meta name="author" content="{{ $authorName }}">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="{{ if $isNoIndex }}noindex, nofollow{{ else }}index, follow{{ end }}">
+<link rel="canonical" href="{{ $canonical }}">
+
+<meta property="og:site_name" content="{{ $siteTitle }}">
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:type" content="{{ $ogType }}">
+<meta property="og:url" content="{{ $canonical }}">
+<meta property="og:locale" content="{{ replace (lower $languageCode) "-" "_" }}">
+{{ with $image }}
+<meta property="og:image" content="{{ . }}">
+{{ end }}
+
+<meta name="twitter:card" content="{{ $twitterCard }}">
+<meta name="twitter:title" content="{{ $pageTitle }}">
+<meta name="twitter:description" content="{{ $description }}">
+{{ with $image }}
+<meta name="twitter:image" content="{{ . }}">
+{{ end }}
+
+{{ if and .IsPage (eq $ogType "article") }}
+<meta property="article:published_time" content="{{ (.PublishDate | default .Date) | time.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod | time.Format "2006-01-02T15:04:05Z07:00" }}">
+{{ with .Params.tags }}
+{{ range . }}
+<meta property="article:tag" content="{{ . }}">
+{{ end }}
+{{ end }}
+{{ end }}
+
+{{ if .IsHome }}
+<link rel="alternate" type="application/rss+xml" title="{{ $siteTitle }}" href="{{ "index.xml" | absURL }}">
+<script type="application/ld+json">{{ $siteSchema | jsonify | safeJS }}</script>
+{{ else if .IsPage }}
+<script type="application/ld+json">{{ $pageSchema | jsonify | safeJS }}</script>
+{{ end }}

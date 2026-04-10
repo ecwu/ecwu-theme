@@ -1,7 +1,8 @@
 {{ define "main" }}
-<h2 class="w-content text-3xl font-bold mt-6 mb-6 dark:text-gray-200">
+<main id="main-content" tabindex="-1">
+<h1 class="w-content text-3xl font-bold mt-6 mb-6 dark:text-gray-200">
   All Series
-</h2>
+</h1>
 <div class="w-content my-10">
   <ul class="space-y-8 max-w-[600px]">
     {{ range $key, $value := .Data.Terms.ByCount }}
@@ -17,7 +18,7 @@
         {{ if gt (len $bgimg.Values) 0 }}
         <img 
           src="{{ index $bgimg.Values (string 0) }}" 
-          alt="{{ $value.Name | humanize |title }}" 
+          alt="Cover image for the {{ $value.Name | humanize | title }} series" 
           class="w-full h-full object-cover no-dark-invert"
           loading="lazy">
         {{ else }}
@@ -73,4 +74,5 @@
     {{ end }}
   </ul>
 </div>
+</main>
 {{ end }}

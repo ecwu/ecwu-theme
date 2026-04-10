@@ -1,6 +1,7 @@
 
 <figure class="w-full">
-  <img src="{{ .Get "src" }}" {{ with .Get "alt"}}alt="{{ . }}"{{ end }} class="rounded-lg">
+  {{ $alt := .Get "alt" | default (.Get "caption") | default (.Get "title") | default "" }}
+  <img src="{{ .Get "src" }}" alt="{{ $alt }}" class="rounded-lg" loading="lazy" decoding="async">
 
   <figcaption>
   {{ with .Get "title"}}<strong>{{ . }} </strong>{{ end}}
