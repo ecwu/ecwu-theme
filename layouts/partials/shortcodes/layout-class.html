@@ -19,6 +19,8 @@
       {{- $scratch.Set "classes" (($scratch.Get "classes") | append "l-body") -}}
     {{- else if eq . "page" -}}
       {{- $scratch.Set "classes" (($scratch.Get "classes") | append "l-page") -}}
+    {{- else if eq . "gutter" -}}
+      {{- $scratch.Set "classes" (($scratch.Get "classes") | append "l-gutter") -}}
     {{- else if eq . "screen" -}}
       {{- $scratch.Set "classes" (($scratch.Get "classes") | append "l-screen") -}}
     {{- else if eq . "screen-right" -}}

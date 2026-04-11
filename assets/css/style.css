@@ -2875,6 +2875,10 @@
     --layout-page-gap: 0rem;
     --layout-page-width: 100%;
     --layout-page-offset: 0rem;
+    --layout-gutter-total-width: 100%;
+    --layout-gutter-inner-gap: 1.25rem;
+    --layout-gutter-width: 100%;
+    --layout-gutter-right-offset: 0rem;
     --layout-screen-width: 100vw;
     --layout-screen-right-width: var(--page-content-width);
     --layout-screen-offset: calc(-1 * var(--page-padding-left));
@@ -2886,6 +2890,10 @@
       --layout-page-gap: var(--page-padding-left);
       --layout-page-width: calc(100vw - (2 * var(--layout-page-gap)));
       --layout-page-offset: calc(var(--layout-page-gap) - var(--page-padding-left));
+      --layout-gutter-total-width: calc((100vw - (2 * var(--page-padding-left))) - ((100vw - var(--page-padding-left) - var(--page-padding-right)) * 0.55));
+      --layout-gutter-inner-gap: 1.25rem;
+      --layout-gutter-width: calc(var(--layout-gutter-total-width) - var(--layout-gutter-inner-gap));
+      --layout-gutter-right-offset: calc(var(--layout-page-gap) - var(--page-padding-right));
     }
   }
   article.distill-layout > * {
@@ -2913,6 +2921,16 @@
       width: var(--layout-page-width);
       max-width: var(--layout-page-width);
       margin-left: var(--layout-page-offset);
+    }
+    article.distill-layout > .l-gutter {
+      width: var(--layout-gutter-width);
+      max-width: var(--layout-gutter-width);
+      float: right;
+      clear: right;
+      margin-top: 0.25rem;
+      margin-left: var(--layout-gutter-inner-gap);
+      margin-right: var(--layout-gutter-right-offset);
+      margin-bottom: 1rem;
     }
   }
   article.distill-layout > .l-screen {
@@ -2961,6 +2979,15 @@
     }
   }
   @media (max-width: 767px) {
+    article.distill-layout > .l-gutter {
+      float: none;
+      clear: none;
+      width: auto;
+      max-width: var(--layout-body-width);
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
     article.distill-layout > .side {
       float: none;
       clear: none;
@@ -3165,8 +3192,9 @@
   .sidenote, .marginnote {
     float: right;
     clear: right;
-    margin-right: -60%;
-    width: 50%;
+    margin-right: calc(-1 * var(--layout-gutter-total-width, 60%));
+    width: var(--layout-gutter-width, 60%);
+    margin-left: var(--layout-gutter-inner-gap, 0rem);
     margin-top: 0;
     margin-bottom: 0;
     font-size: 1.1rem;
