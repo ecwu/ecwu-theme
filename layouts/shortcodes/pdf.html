@@ -1,6 +1,6 @@
 {{ $aspect := .Get "aspect" | default "landscape" }}
 {{ $aspectClass := "aspect-[297/210]" }}
-{{ $layoutClass := partial "shortcodes/layout-class.html" (dict "ctx" . "default_classes" "w-full") }}
+{{ $layoutClass := partial "shortcodes/layout-class.html" (dict "ctx" . "default_classes" "") }}
 {{ if eq $aspect "portrait" }}
   {{ $aspectClass = "aspect-[210/297]" }}
 {{ else if eq $aspect "video" }}

@@ -3,7 +3,7 @@
 {{- partial "article/article-meta.html" . -}}
 {{- partial "article/series.html" . -}}
 <main id="main-content" tabindex="-1">
-<article class="prose distill-layout dark:prose-invert lg:prose-xl md:prose-lg prose-ul:leading-5 prose-ol:leading-5" aria-labelledby="article-title">
+<article class="prose article-layout dark:prose-invert lg:prose-xl md:prose-lg prose-ul:leading-5 prose-ol:leading-5" aria-labelledby="article-title">
     {{ partial "article/toc.html" . }}
     {{ $friends := hugo.Data.friends }}
     {{ if $friends }}

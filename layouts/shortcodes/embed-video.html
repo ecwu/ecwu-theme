@@ -2,7 +2,7 @@
 {{ $site := .Get "site" }}
 {{ $aspect := .Get "aspect" | default "landscape" }}
 {{ $aspectClass := "aspect-video" }}
-{{ $layoutClass := partial "shortcodes/layout-class.html" (dict "ctx" . "default_classes" "my-5 w-full") }}
+{{ $layoutClass := partial "shortcodes/layout-class.html" (dict "ctx" . "default_classes" "my-5") }}
 {{ if eq $aspect "portrait" }}
   {{ $aspectClass = "aspect-[9/16]" }}
 {{ end }}

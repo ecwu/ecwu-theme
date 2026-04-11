@@ -82,7 +82,7 @@
 {{- end -}}
 
 
-<figure>
+<figure class="l-body">
   {{- if $isRemote -}}
     {{- template "RenderImageSimple" (dict "imgObj" "" "src" $urlStr "alt" $altText) -}}
   {{- else if $resource -}}
