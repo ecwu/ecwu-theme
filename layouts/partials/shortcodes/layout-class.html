@@ -1,0 +1,38 @@
+{{- $ctx := .ctx -}}
+{{- $defaultClasses := .default_classes | default "" -}}
+{{- $defaultLayout := .default_layout | default "" -}}
+{{- $layoutValue := $ctx.Get "layout" | default "" -}}
+{{- $classValue := $ctx.Get "class" | default "" -}}
+{{- $scratch := newScratch -}}
+{{- $scratch.Set "classes" (slice) -}}
+
+{{- range split $defaultClasses " " -}}
+  {{- if ne . "" -}}
+    {{- $scratch.Set "classes" (($scratch.Get "classes") | append .) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $layoutTokens := split (cond (ne $layoutValue "") $layoutValue $defaultLayout) " " -}}
+{{- range $layoutTokens -}}
+  {{- if ne . "" -}}
+    {{- if eq . "body" -}}
+      {{- $scratch.Set "classes" (($scratch.Get "classes") | append "l-body") -}}
+    {{- else if eq . "page" -}}
+      {{- $scratch.Set "classes" (($scratch.Get "classes") | append "l-page") -}}
+    {{- else if eq . "screen" -}}
+      {{- $scratch.Set "classes" (($scratch.Get "classes") | append "l-screen") -}}
+    {{- else if eq . "screen-right" -}}
+      {{- $scratch.Set "classes" (($scratch.Get "classes") | append "l-screen-right") -}}
+    {{- else -}}
+      {{- $scratch.Set "classes" (($scratch.Get "classes") | append .) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- range split $classValue " " -}}
+  {{- if ne . "" -}}
+    {{- $scratch.Set "classes" (($scratch.Get "classes") | append .) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return delimit (uniq ($scratch.Get "classes")) " " -}}

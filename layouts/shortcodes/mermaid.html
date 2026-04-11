@@ -1,1 +1,2 @@
-<pre class="not-prose mermaid">{{ .Inner | safeHTML }}</pre>
+{{ $layoutClass := partial "shortcodes/layout-class.html" (dict "ctx" . "default_classes" "not-prose mermaid") }}
+<pre class="{{ $layoutClass }}">{{ .Inner | safeHTML }}</pre>

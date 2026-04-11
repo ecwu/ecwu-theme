@@ -1,4 +1,5 @@
-<div class="gallery-breakout not-prose {{ with .Get "g-class" }}{{ . }}{{ end }}">
+{{ $layoutClass := partial "shortcodes/layout-class.html" (dict "ctx" . "default_classes" "gallery-breakout not-prose" "default_layout" "screen-right") }}
+<div class="{{ $layoutClass }}{{ with .Get "g-class" }} {{ . }}{{ end }}">
   <div class="gallery-hint flex space-x-2 mb-4">
     <svg class="flex-none w-5 h-5" viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="m9.813 9.25.346-5.138a1.276 1.276 0 0 0-2.54-.235L6.75 11.25 5.147 9.327a1.605 1.605 0 0 0-2.388-.085.018.018 0 0 0-.004.019l1.98 4.87a5 5 0 0 0 4.631 3.119h3.885a4 4 0 0 0 4-4v-1a3 3 0 0 0-3-3H9.813Z" class="stroke-slate-800 dark:stroke-slate-300"></path>

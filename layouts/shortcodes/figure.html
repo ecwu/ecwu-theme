@@ -1,5 +1,5 @@
-
-<figure class="w-full">
+{{ $layoutClass := partial "shortcodes/layout-class.html" (dict "ctx" . "default_classes" "w-full") }}
+<figure class="{{ $layoutClass }}">
   {{ $alt := .Get "alt" | default (.Get "caption") | default (.Get "title") | default "" }}
   <img src="{{ .Get "src" }}" alt="{{ $alt }}" class="rounded-lg" loading="lazy" decoding="async">
 

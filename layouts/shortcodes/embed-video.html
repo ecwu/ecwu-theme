@@ -2,16 +2,17 @@
 {{ $site := .Get "site" }}
 {{ $aspect := .Get "aspect" | default "landscape" }}
 {{ $aspectClass := "aspect-video" }}
+{{ $layoutClass := partial "shortcodes/layout-class.html" (dict "ctx" . "default_classes" "my-5 w-full") }}
 {{ if eq $aspect "portrait" }}
   {{ $aspectClass = "aspect-[9/16]" }}
 {{ end }}
 
 {{ if eq $site "youtube" }}
-<div class="my-5 w-full {{ $aspectClass }}">
+<div class="{{ $layoutClass }} {{ $aspectClass }}">
    <iframe class="w-full h-full" src="https://www.youtube.com/embed/{{ $id }}" title="{{ .Get "title" | default "Embedded YouTube video" }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 {{ else if eq $site "bilibili" }}
-<div class="my-5 w-full {{ $aspectClass }}">
+<div class="{{ $layoutClass }} {{ $aspectClass }}">
    <iframe class="w-full h-full" src="https://player.bilibili.com/player.html?bvid={{ $id }}&as_wide=1&high_quality=1&danmaku=0&autoplay=0" title="{{ .Get "title" | default "Embedded Bilibili video" }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen> </iframe>
 </div>
 {{ end }}

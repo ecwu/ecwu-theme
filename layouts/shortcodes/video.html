@@ -1,5 +1,6 @@
 {{ $aspect := .Get "aspect" | default "landscape" }}
 {{ $aspectClass := "aspect-video" }}
+{{ $layoutClass := partial "shortcodes/layout-class.html" (dict "ctx" . "default_classes" "w-full") }}
 {{ if eq $aspect "portrait" }}
   {{ $aspectClass = "aspect-[9/16]" }}
 {{ end }}
@@ -23,7 +24,7 @@
     {{ $videoType = "video/quicktime" }}
   {{ end }}
 {{ end }}
-<div class="w-full {{ $aspectClass }}">
+<div class="{{ $layoutClass }} {{ $aspectClass }}">
   <video controls preload="metadata" title="{{ $label }}" aria-label="{{ $label }}" {{ if .Get "is-loop" }}loop{{ end }} class="rounded-lg w-full h-full object-cover">
     <source src="{{ $videoURL }}"{{ with $videoType }} type="{{ . }}"{{ end }}/>
     Your browser does not support the video tag 你的浏览器不支持视频.
