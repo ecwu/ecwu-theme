@@ -1,0 +1,9 @@
+{{ if .Page.HasShortcode "vegalite" }}
+  {{ $styles := resources.Get "css/vegalite.css" | minify | fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") }}
+  {{ $script := resources.Get "js/vegalite.js" | minify | fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+  <script defer src="https://cdn.jsdelivr.net/npm/vega@6.3.1/build/vega.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/vega-lite@6.4.3/build/vega-lite.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@7.1.0/build/vega-embed.min.js"></script>
+  <script defer src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{ end }}

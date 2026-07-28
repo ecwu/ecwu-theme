@@ -1,0 +1,52 @@
+{{- $rawSpec := strings.TrimSpace .Inner -}}
+{{- if not $rawSpec -}}
+  {{- errorf "The vegalite shortcode in %q requires a Vega-Lite JSON specification between its opening and closing tags." .Page.File.Path -}}
+{{- end -}}
+
+{{- $spec := transform.Unmarshal $rawSpec -}}
+{{- if not (reflect.IsMap $spec) -}}
+  {{- errorf "The vegalite shortcode in %q must contain a JSON object." .Page.File.Path -}}
+{{- end -}}
+
+{{- $renderer := .Get "renderer" | default "svg" -}}
+{{- if not (in (slice "svg" "canvas") $renderer) -}}
+  {{- errorf "The vegalite shortcode renderer in %q must be either %q or %q." .Page.File.Path "svg" "canvas" -}}
+{{- end -}}
+
+{{- $actions := false -}}
+{{- with .Get "actions" -}}
+  {{- $actions = eq (lower (printf "%v" .)) "true" -}}
+{{- end -}}
+
+{{- $options := dict
+  "actions" $actions
+  "mode" "vega-lite"
+  "renderer" $renderer
+-}}
+{{- with .Get "theme" -}}
+  {{- $options = merge $options (dict "theme" .) -}}
+{{- end -}}
+
+{{- $chartID := printf "vegalite-%s-%d" (md5 .Page.RelPermalink) .Ordinal -}}
+{{- $specID := printf "%s-spec" $chartID -}}
+{{- $layoutClass := partial "shortcodes/layout-class.html" (dict
+  "ctx" .
+  "default_classes" "vegalite-figure not-prose"
+  "default_layout" "body"
+) -}}
+
+<figure class="{{ $layoutClass }}">
+  <div
+    id="{{ $chartID }}"
+    class="vegalite-chart"
+    data-vegalite
+    data-spec-id="{{ $specID }}"
+    data-options="{{ $options | jsonify }}"
+    {{- with .Get "label" }} aria-label="{{ . }}"{{ end -}}
+  ></div>
+  {{- $safeSpec := replace $rawSpec "</" "<\\/" -}}
+  <script id="{{ $specID }}" type="application/json">{{ $safeSpec | safeJS }}</script>
+  {{- with .Get "caption" }}
+    <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>

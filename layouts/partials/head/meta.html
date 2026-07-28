@@ -1,6 +1,6 @@
 {{- $siteTitle := .Site.Title -}}
 {{- $siteSubtitle := .Site.Params.subtitle | default $siteTitle -}}
-{{- $languageCode := .Site.Language.LanguageCode | default .Site.LanguageCode | default "en" -}}
+{{- $languageCode := .Site.Language.Locale | default "en" -}}
 {{- $pageTitle := $siteSubtitle -}}
 {{- if .IsHome -}}
   {{- $pageTitle = printf "%s | %s" $siteSubtitle $siteTitle -}}
