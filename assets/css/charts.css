@@ -1,0 +1,55 @@
+.spark-benchmark{--sb-ink:#30332f;--sb-muted:#62695f;--sb-line:#d5dad2;--sb-bg:#fff;--sb-main:#526640;--sb-gold:#9b6b10;--sb-blue:#225fae;--sb-rust:#b6502a;color:var(--sb-ink);background:var(--sb-bg);font-family:inherit;font-size:15px;line-height:1.55;margin:2rem 0;min-width:0;isolation:isolate}
+.dark .spark-benchmark{--sb-ink:#e0e4e6;--sb-muted:#aab3aa;--sb-line:#465046;--sb-bg:#181b1e;--sb-main:#a6b895;--sb-gold:#f6d879;--sb-blue:#72a7ef;--sb-rust:#e8a073}
+.spark-benchmark *{box-sizing:border-box}
+.spark-benchmark [hidden]{display:none!important}
+.spark-benchmark ::selection{background:#dfe5d8;color:#30332f}
+.spark-benchmark .sb-heading{font-size:1.3rem;font-weight:600;line-height:1.35;margin:0 0 .35rem}
+.spark-benchmark .sb-note{color:var(--sb-muted);font-size:.85rem;margin:.65rem 0;max-width:90ch;overflow-wrap:anywhere}
+.spark-benchmark .sb-controls{display:flex;gap:.8rem 1rem;flex-wrap:wrap;margin:1.2rem 0}
+.spark-benchmark label{font-size:.85rem;display:flex;flex-direction:column;gap:.3rem;flex:1 1 170px;min-width:0}
+.spark-benchmark select{appearance:auto;width:100%;min-height:44px;padding:.5rem .65rem;font:inherit;color:var(--sb-ink);background:var(--sb-bg);border:1px solid var(--sb-line);border-radius:3px;caret-color:var(--sb-main)}
+.spark-benchmark :is(select,summary,a,.sb-scroll):focus-visible{outline:2px solid var(--sb-main);outline-offset:3px}
+.spark-benchmark .sb-legend{display:flex;flex-wrap:wrap;gap:.7rem 1.4rem;margin:1rem 0;font-size:.9rem}
+.spark-benchmark .sb-legend-item{display:flex;align-items:center;gap:.4rem}
+.spark-benchmark .sb-legend-item svg{width:34px;height:18px;flex:none;overflow:visible}
+.spark-benchmark .sb-plot{position:relative;min-width:0;margin:.5rem 0}
+.spark-benchmark .sb-plot>svg{display:block;width:100%;height:auto;overflow:visible;font-family:inherit;font-variant-numeric:tabular-nums}
+.spark-benchmark .sb-axis{stroke:var(--sb-ink);stroke-width:1;fill:none}
+.spark-benchmark .sb-grid-line{stroke:var(--sb-line);stroke-width:1;stroke-dasharray:2 6;opacity:.6}
+.spark-benchmark .sb-tick{fill:var(--sb-muted);font-size:13px}
+.spark-benchmark .sb-axis-title{fill:var(--sb-ink);font-size:14px}
+.spark-benchmark .sb-series{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.spark-benchmark .sb-point{cursor:pointer;outline:none}
+.spark-benchmark .sb-point:focus-visible .sb-hit{stroke:var(--sb-ink);stroke-width:1.5;stroke-dasharray:3 3}
+.spark-benchmark .sb-point:hover .sb-mark,.spark-benchmark .sb-point:focus-visible .sb-mark{stroke:var(--sb-ink);stroke-width:1.5}
+.spark-benchmark .sb-tooltip{position:absolute;pointer-events:none;z-index:3;max-width:270px;padding:.6rem .75rem;border:1px solid var(--sb-line);background:var(--sb-bg);color:var(--sb-ink);font-size:.82rem;line-height:1.6;box-shadow:0 3px 12px rgb(0 0 0 / .08)}
+.spark-benchmark .sb-tooltip strong{display:block;font-weight:600}
+.spark-benchmark .sb-tooltip span{display:block}
+.spark-benchmark .sb-scroll{overflow:auto;margin:.6rem 0;scrollbar-color:var(--sb-main) var(--sb-bg);scrollbar-width:thin}
+.spark-benchmark table{border-collapse:collapse;margin:0;width:100%;min-width:580px;color:inherit;line-height:1.5;font-size:.8rem;font-variant-numeric:tabular-nums}
+.spark-benchmark :is(th,td){padding:.5rem .6rem;border-bottom:1px solid var(--sb-line);text-align:right}
+.spark-benchmark :is(th,td):first-child{text-align:left}
+.spark-benchmark th{font-weight:600}
+.spark-benchmark details{margin:.8rem 0;border-top:1px solid var(--sb-line);padding-top:.4rem}
+.spark-benchmark summary{font-size:.85rem;cursor:pointer;color:var(--sb-ink);padding:.35rem 0;min-height:36px}
+.spark-benchmark .sb-links{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-size:.8rem;margin-top:1rem}
+.spark-benchmark a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.spark-benchmark label{flex-basis:calc(50% - .5rem)}.spark-benchmark .sb-heading{font-size:1.15rem}.spark-benchmark .sb-legend{gap:.6rem 1rem;font-size:.82rem}.spark-benchmark .sb-tooltip{max-width:230px}}
+@media print{.spark-benchmark .sb-controls,.spark-benchmark .sb-tooltip{display:none}.spark-benchmark .sb-scroll{overflow:visible}}
+
+.spark-benchmark .sb-plot{height:460px}
+.spark-benchmark .sb-plot>canvas{width:100%;height:100%}
+@media(max-width:600px){.spark-benchmark .sb-plot{height:350px}}
+
+.spark-benchmark .sb-dot-plot{height:840px}
+.spark-benchmark .sb-model-swatch{width:12px;height:12px;border-radius:50%;flex:none}
+.spark-benchmark .sb-symbol{display:inline-block;width:12px;height:12px;background:var(--sb-ink);flex:none}
+.spark-benchmark .sb-symbol-circle{border-radius:50%}
+.spark-benchmark .sb-symbol-triangle{width:0;height:0;background:none;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:13px solid var(--sb-ink)}
+@media(max-width:600px){.spark-benchmark .sb-dot-plot{height:780px}}
+
+.spark-benchmark .sb-interactive>.sb-note{width:100%;max-width:none}
+
+.spark-benchmark button.sb-legend-item{font:inherit;color:inherit;background:none;border:0;padding:.35rem .2rem;min-height:44px;cursor:pointer;text-align:left}
+.spark-benchmark button.sb-legend-item:focus-visible{outline:2px solid var(--sb-main);outline-offset:3px}
+.spark-benchmark button.sb-legend-item[aria-pressed="false"]{opacity:.45;text-decoration:line-through}
