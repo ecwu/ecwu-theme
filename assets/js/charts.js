@@ -4,7 +4,7 @@
     const lengths={2048:'2K',8192:'8K',32768:'32K',64512:'64K',131072:'128K',261120:'262K'};
     const defs={ttft:{name:'首个文本等待时间 · TTFT',unit:'秒'},decode_tps:{name:'单请求 decode 速度',unit:'tok/s'},output_throughput:{name:'整轮输出吞吐',unit:'tok/s'},end_to_end:{name:'端到端耗时',unit:'秒'},cached_tokens:{name:'命中缓存',unit:'tokens'},ttft_saved:{name:'比首次节省的 TTFT',unit:'秒'},ttft_speedup:{name:'相对首次的 TTFT 加速比',unit:'倍'}};
     const concurrencyStyles=[{concurrency:1,shape:'circle'},{concurrency:2,shape:'rect'},{concurrency:4,shape:'triangle'}];
-    const identities=[{key:'qwen27',label:'Qwen3.8-27B',color:'var(--sb-gold)',shape:'circle'},{key:'qwen36',label:'Qwen3.6-35B-A3B',color:'var(--sb-blue)',shape:'diamond'},{key:'flash-next',label:'Qwen3.8-Flash-Next',color:'var(--sb-rust)',shape:'triangle'}];
+    const identities=[{key:'qwen27',label:'Qwen3.8-27B',color:'var(--sb-gold)',shape:'circle'},{key:'qwen36',label:'Qwen3.6-35B-A3B',color:'var(--sb-green)',shape:'diamond'},{key:'flash-next',label:'Qwen3.8-Flash-Next',color:'var(--sb-purple)',shape:'triangle'}];
     function initCache(root,data){
       const $=s=>root.querySelector(s),plot=$('.sb-plot'),canvas=el('canvas');
       canvas.setAttribute('role','img');canvas.setAttribute('aria-label','三个模型的缓存复用气泡图。纵轴为 TTFT，气泡面积代表 decode TPS。完整数值可查阅 CSV / JSON 原始数据。');plot.append(canvas);

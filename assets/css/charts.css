@@ -1,5 +1,5 @@
-.spark-benchmark{--sb-ink:#30332f;--sb-muted:#62695f;--sb-line:#d5dad2;--sb-bg:#fff;--sb-main:#526640;--sb-gold:#9b6b10;--sb-blue:#225fae;--sb-rust:#b6502a;color:var(--sb-ink);background:var(--sb-bg);font-family:inherit;font-size:15px;line-height:1.55;margin:2rem 0;min-width:0;isolation:isolate}
-.dark .spark-benchmark{--sb-ink:#e0e4e6;--sb-muted:#aab3aa;--sb-line:#465046;--sb-bg:#181b1e;--sb-main:#a6b895;--sb-gold:#f6d879;--sb-blue:#72a7ef;--sb-rust:#e8a073}
+.spark-benchmark{--sb-ink:#30332f;--sb-muted:#62695f;--sb-line:#d5dad2;--sb-bg:#fff;--sb-main:#526640;--sb-gold:#9b6b10;--sb-green:#287a45;--sb-purple:#8050b5;color:var(--sb-ink);background:transparent;font-family:inherit;font-size:15px;line-height:1.55;margin:2rem 0;min-width:0;isolation:isolate}
+.dark .spark-benchmark{--sb-ink:#e0e4e6;--sb-muted:#aab3aa;--sb-line:#465046;--sb-bg:#181b1e;--sb-main:#a6b895;--sb-gold:#f6d879;--sb-green:#83d69b;--sb-purple:#c5a0f0}
 .spark-benchmark *{box-sizing:border-box}
 .spark-benchmark [hidden]{display:none!important}
 .spark-benchmark ::selection{background:#dfe5d8;color:#30332f}
