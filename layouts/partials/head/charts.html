@@ -1,8 +1,1 @@
-{{ if and .Params.charts (not (.Store.Get "chartsLoaded")) }}
-  {{ .Store.Set "chartsLoaded" true }}
-  {{ $styles := resources.Get "css/charts.css" | minify }}
-  {{ $script := resources.Get "js/charts.js" | minify }}
-  <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
-  <script defer src="{{ "vendor/chartjs/chart.umd.min.js" | relURL }}"></script>
-  <script defer src="{{ $script.RelPermalink }}"></script>
-{{ end }}
+{{- partial "head/chartjs.html" . -}}

@@ -1,0 +1,4 @@
+{{ if and .Params.charts (not (.Store.Get "chartsLoaded")) }}
+  {{ .Store.Set "chartsLoaded" true }}
+  <script defer src="{{ "vendor/chartjs/chart.umd.min.js" | relURL }}"></script>
+{{ end }}
